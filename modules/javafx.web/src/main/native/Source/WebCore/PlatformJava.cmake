@@ -116,7 +116,6 @@ list(APPEND WebCore_SOURCES
     platform/graphics/java/GraphicsContextJava.cpp
     platform/graphics/java/IconJava.cpp
     platform/graphics/java/ImageBufferJava.cpp
-    platform/graphics/java/ImageFrameData.cpp
     platform/graphics/java/ImageJava.cpp
     platform/graphics/java/ImageDecoderJava.cpp  # FIXME: Add only if IMAGEIO?
     platform/graphics/java/MediaPlayerPrivateJava.cpp
@@ -458,3 +457,5 @@ set(WebCore_FORWARDING_HEADERS_DIRECTORIES
     svg/graphics/filters)
 
 WEBKIT_CREATE_FORWARDING_HEADERS(WebCore DIRECTORIES ${WebCore_FORWARDING_HEADERS_DIRECTORIES})
+
+configure_file(platform/java/WebPageConfig.h.in ${CMAKE_BINARY_DIR}/WebPageConfig.h)
