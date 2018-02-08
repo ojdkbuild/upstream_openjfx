@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -171,6 +171,7 @@ public class Accordion extends Control {
      * then expanded pane will be set to null, if possible. (This will not be possible
      * if you have manually bound the expanded pane to some value, for example).
      * </p>
+     * @param value the expanded {@link TitledPane}
      */
     public final void setExpandedPane(TitledPane value) { expandedPaneProperty().set(value); }
 

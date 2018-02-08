@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -135,6 +135,7 @@ public class TableRow<T> extends IndexedCell<T> {
 
     /**
      * The TableView associated with this Cell.
+     * @return the TableView associated with this Cell
      */
     public final ReadOnlyObjectProperty<TableView<T>> tableViewProperty() {
         return tableViewPropertyImpl().getReadOnlyProperty();
@@ -340,9 +341,10 @@ public class TableRow<T> extends IndexedCell<T> {
      * Updates the TableView associated with this TableCell. This is typically
      * only done once when the TableCell is first added to the TableView.
      *
-     * @expert This function is intended to be used by experts, primarily
+     * Note: This function is intended to be used by experts, primarily
      *         by those implementing new Skins. It is not common
      *         for developers or designers to access this function directly.
+     * @param tv the TableView
      */
     public final void updateTableView(TableView<T> tv) {
         setTableView(tv);

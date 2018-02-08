@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -135,6 +135,7 @@ public abstract class Labeled extends Control {
      **************************************************************************/
     /**
      * The text to display in the label. The text may be null.
+     * @return the text to display in the label
      */
     public final StringProperty textProperty() {
         if (text == null) {
@@ -149,6 +150,7 @@ public abstract class Labeled extends Control {
     /**
      * Specifies how the text and graphic within the Labeled should be
      * aligned when there is empty space within the Labeled.
+     * @return the alignment within this labeled
      */
     public final ObjectProperty<Pos> alignmentProperty() {
         if (alignment == null) {
@@ -180,6 +182,7 @@ public abstract class Labeled extends Control {
      * Specifies the behavior for lines of text <em>when text is multiline</em>
      * Unlike {@link #contentDisplayProperty} which affects the graphic and text, this setting
      * only affects multiple lines of text relative to the text bounds.
+     * @return the alignment of lines of text within this labeled
      */
     public final ObjectProperty<TextAlignment> textAlignmentProperty() {
         if (textAlignment == null) {
@@ -210,6 +213,7 @@ public abstract class Labeled extends Control {
     /**
      * Specifies the behavior to use if the text of the {@code Labeled}
      * exceeds the available space for rendering the text.
+     * @return the overrun behavior if the text exceeds the available space
      */
     public final ObjectProperty<OverrunStyle> textOverrunProperty() {
         if (textOverrun == null) {
@@ -240,16 +244,20 @@ public abstract class Labeled extends Control {
     /**
      * Specifies the string to display for the ellipsis when text is truncated.
      *
-     * <table border="0" cellpadding="0" cellspacing="0"><tr><th>Examples</th></tr>
-     *   <tr class="altColor"><td align="right">"..."</td>        <td>- Default value for most locales</td>
-     *   <tr class="rowColor"><td align="right">" . . . "</td>    <td></td>
-     *   <tr class="altColor"><td align="right">" [...] "</td>    <td></td>
-     *   <tr class="rowColor"><td align="right">"&#92;u2026"</td> <td>- The Unicode ellipsis character '&hellip;'</td>
-     *   <tr class="altColor"><td align="right">""</td>           <td>- No ellipsis, just display the truncated string</td>
+     * <table>
+     *   <caption>Ellipsis Table</caption>
+     *   <tr><th colspan=2>Examples</th></tr>
+     *   <tr class="altColor"><td>"..." </td>        <td>Default value for most locales</td>
+     *   <tr class="rowColor"><td>" . . . " </td>    <td></td>
+     *   <tr class="altColor"><td>" [...] " </td>    <td></td>
+     *   <tr class="rowColor"><td>"&#92;u2026" </td> <td>The Unicode ellipsis character '&hellip;'</td>
+     *   <tr class="altColor"><td>"" </td>           <td>No ellipsis, just display the truncated string</td>
      * </table>
      *
      * <p>Note that not all fonts support all Unicode characters.
      *
+     * @return the ellipsis property on the string to display for the ellipsis
+     * when text is truncated
      * @see <a href="http://en.wikipedia.org/wiki/Ellipsis#Computer_representations">Wikipedia:ellipsis</a>
      * @since JavaFX 2.2
      */
@@ -279,6 +287,7 @@ public abstract class Labeled extends Control {
     /**
      * If a run of text exceeds the width of the Labeled, then this variable
      * indicates whether the text should wrap onto another line.
+     * @return the wrap property if a run of text exceeds the width of the Labeled
      */
     public final BooleanProperty wrapTextProperty() {
         if (wrapText == null) {
@@ -319,6 +328,7 @@ public abstract class Labeled extends Control {
      * rich text then this font may or may not be used depending on the font
      * information embedded in the rich text, but in any case where a default
      * font is required, this font will be used.
+     * @return the default font to use for text in this labeled
      */
     public final ObjectProperty<Font> fontProperty() {
 
@@ -394,6 +404,7 @@ public abstract class Labeled extends Control {
      * variable cannot appear elsewhere in the scene graph, otherwise
      * the {@code IllegalArgumentException} is thrown.  See the class
      * description of {@link javafx.scene.Node Node} for more detail.
+     * @return the optional icon for this labeled
      */
     public final ObjectProperty<Node> graphicProperty() {
         if (graphic == null) {
@@ -551,6 +562,7 @@ public abstract class Labeled extends Control {
 
     /**
      * Whether all text should be underlined.
+     * @return the underline property of all text in this labeled
      */
     public final BooleanProperty underlineProperty() {
         if (underline == null) {
@@ -580,6 +592,7 @@ public abstract class Labeled extends Control {
 
     /**
      * Specifies the space in pixel between lines.
+     * @return the line spacing property between lines in this labeled
      * @since JavaFX 8.0
      */
     public final DoubleProperty lineSpacingProperty() {
@@ -610,6 +623,7 @@ public abstract class Labeled extends Control {
 
     /**
      * Specifies the positioning of the graphic relative to the text.
+     * @return content display property of this labeled
      */
     public final ObjectProperty<ContentDisplay> contentDisplayProperty() {
         if (contentDisplay == null) {
@@ -643,6 +657,7 @@ public abstract class Labeled extends Control {
      * Subclasses may add nodes outside this padding and inside the Labeled's padding.
      *
      * This property can only be set from CSS.
+     * @return  the label padding property of this labeled
      */
     public final ReadOnlyObjectProperty<Insets> labelPaddingProperty() {
         return labelPaddingPropertyImpl();
@@ -687,6 +702,7 @@ public abstract class Labeled extends Control {
 
     /**
      * The amount of space between the graphic and text
+     * @return the graphics text gap property of this labeled
      */
     public final DoubleProperty graphicTextGapProperty() {
         if (graphicTextGap == null) {
@@ -808,6 +824,7 @@ public abstract class Labeled extends Control {
      * by the JavaFX CSS engine to correctly set its initial value. This method
      * is overridden to use Pos.CENTER_LEFT initially.
      *
+     * @return the initial alignment state of this control
      * @since 9
      */
     protected Pos getInitialAlignment() {

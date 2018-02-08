@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -42,7 +42,7 @@ import com.sun.javafx.scene.BoundsAccessor;
  *
  * <p>
  * Example:
- * <pre><code>
+ * <pre>{@code
  * SepiaTone sepiaTone = new SepiaTone();
  * sepiaTone.setLevel(0.7);
  *
@@ -51,14 +51,14 @@ import com.sun.javafx.scene.BoundsAccessor;
  * imageView.setFitWidth(200);
  * imageView.setPreserveRatio(true);
  * imageView.setEffect(sepiaTone);
- * </pre></code>
+ * }</pre>
  * <p> The code above applied on this image: </p>
  * <p>
- * <img src="doc-files/photo.png"/>
+ * <img src="doc-files/photo.png" alt="A photo">
  * </p>
  * <p> produces the following: </p>
  * <p>
- * <img src="doc-files/sepiatone.png"/>
+ * <img src="doc-files/sepiatone.png" alt="The visual effect of SepiaTone on photo">
  * </p>
  * @since JavaFX 2.0
  */

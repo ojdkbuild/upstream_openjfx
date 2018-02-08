@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -56,12 +56,15 @@ public class ResizeFeaturesBase<S> {
    * Returns the column upon which the resize is occurring, or null
    * if this ResizeFeatures instance was created as a result of a
    * resize operation.
+   * @return the column upon which the resize is occurring
    */
   public TableColumnBase<S,?> getColumn() { return column; }
 
   /**
    * Returns the amount of horizontal space added or removed in the
    * resize operation.
+   * @return the amount of horizontal space added or removed in the
+   * resize operation
    */
   public Double getDelta() { return delta; }
 }

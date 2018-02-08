@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2014, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -146,11 +146,13 @@ public final class ButtonType {
 
     /**
      * Returns the ButtonData specified for this ButtonType in the constructor.
+     * @return the ButtonData specified for this ButtonType in the constructor
      */
     public final ButtonData getButtonData() { return this.buttonData; }
 
     /**
-     * Returns the text specified for this ButtonType in the constructor;
+     * Returns the text specified for this ButtonType in the constructor.
+     * @return the text specified for this ButtonType in the constructor
      */
     public final String getText() {
         if (text == null && key != null) {

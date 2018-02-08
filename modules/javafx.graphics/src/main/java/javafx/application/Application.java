@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -49,6 +49,8 @@ import com.sun.javafx.css.StyleManager;
  * launched:
  * </p>
  * <ol>
+ * <li>Starts the JavaFX runtime, if not already started
+ * (see {@link Platform#startup(Runnable)} for more information)</li>
  * <li>Constructs an instance of the specified Application class</li>
  * <li>Calls the {@link #init} method</li>
  * <li>Calls the {@link #start} method</li>
@@ -64,6 +66,8 @@ import com.sun.javafx.css.StyleManager;
  * <p>Note that the {@code start} method is abstract and must be overridden.
  * The {@code init} and {@code stop} methods have concrete implementations
  * that do nothing.</p>
+ * <p>The {@code Application} subclass must be declared public and must have a
+ * public no-argument constructor.</p>
  *
  * <p>Calling {@link Platform#exit} is the preferred way to explicitly terminate
  * a JavaFX Application. Directly calling {@link System#exit} is
@@ -76,6 +80,25 @@ import com.sun.javafx.css.StyleManager;
  * {@link #stop} method returns or {@link System#exit} is called.
  * </p>
  *
+ * <p><b>Deploying an Application as a Module</b></p>
+ * <p>
+ * If the {@code Application} subclass is in a named module then that class
+ * must be accessible to the {@code javafx.graphics} module.
+ * Otherwise, an exception will be thrown when the application is launched.
+ * This means that
+ * in addition to the class itself being declared public, the module must
+ * {@link Module#isExported(String,Module) export}
+ * (or {@link Module#isOpen(String,Module) open}) the containing package to
+ * at least the {@code javafx.graphics} module.
+ * </p>
+ * <p>
+ * For example, if {@code com.foo.MyApplication} is in the {@code foo.app}
+ * module, the {@code module-info.java} might look like this:
+ * </p>
+<pre>{@code module foo.app {
+    exports com.foo to javafx.graphics;
+}}</pre>
+*
  * <p><b>Parameters</b></p>
  * <p>
  * Application parameters are available by calling the {@link #getParameters}
@@ -118,7 +141,7 @@ import com.sun.javafx.css.StyleManager;
  *
  * <p><b>Example</b></p>
  * <p>The following example will illustrate a simple JavaFX application.</p>
- * <pre><code>
+ * <pre>{@code
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -136,10 +159,14 @@ public class MyApp extends Application {
         stage.show();
     }
 }
- * </code></pre>
+ * }</pre>
  *
  * <p>The above example will produce the following:</p>
- * <p><img src="doc-files/Application.png"/></p>
+ * <p><img src="doc-files/Application.png" alt="A black circle in the top left
+ * corner of scene"></p>
+ *
+ * @see Platform
+ *
  * @since JavaFX 2.0
  */
 public abstract class Application {
@@ -165,16 +192,20 @@ public abstract class Application {
      * The launch method does not return until the application has exited,
      * either via a call to Platform.exit or all of the application windows
      * have been closed.
+     * The class specified by the {@code appClass} argument must be
+     * a public subclass of {@code Application}
+     * with a public no-argument constructor, in a package that is
+     * {@link Module#isExported(String,Module) exported}
+     * (or {@link Module#isOpen(String,Module) open}) to at least the
+     * {@code javafx.graphics} module, or a RuntimeException will be thrown.
      *
      * <p>
      * Typical usage is:
-     * <ul>
      * <pre>
-     * public static void main(String[] args) {
-     *     Application.launch(MyApp.class, args);
-     * }
+     *     public static void main(String[] args) {
+     *         Application.launch(MyApp.class, args);
+     *     }
      * </pre>
-     * </ul>
      * where <code>MyApp</code> is a subclass of Application.
      *
      * @param appClass the application class that is constructed and executed
@@ -186,6 +217,11 @@ public abstract class Application {
      * @throws IllegalStateException if this method is called more than once.
      * @throws IllegalArgumentException if <code>appClass</code> is not a
      *         subclass of <code>Application</code>.
+     * @throws RuntimeException if there is an error launching the
+     * JavaFX runtime, or if the application class cannot be constructed
+     * (e.g., if the class is not public or is not in an exported package), or
+     * if an Exception or Error is thrown by the Application constructor, init
+     * method, start method, or stop method.
      */
     public static void launch(Class<? extends Application> appClass, String... args) {
         LauncherImpl.launchApplication(appClass, args);
@@ -195,9 +231,14 @@ public abstract class Application {
      * Launch a standalone application. This method is typically called
      * from the main method(). It must not be called more than once or an
      * exception will be thrown.
-     * This is equivalent to launch(TheClass.class, args) where TheClass is the
-     * immediately enclosing class of the method that called launch. It must
-     * be a subclass of Application or a RuntimeException will be thrown.
+     * This is equivalent to {@code launch(TheClass.class, args)} where
+     * {@code TheClass} is the
+     * immediately enclosing class of the method that called launch.
+     * It must be a public subclass of {@code Application}
+     * with a public no-argument constructor, in a package that is
+     * {@link Module#isExported(String,Module) exported}
+     * (or {@link Module#isOpen(String,Module) open}) to at least the
+     * {@code javafx.graphics} module, or a RuntimeException will be thrown.
      *
      * <p>
      * The launch method does not return until the application has exited,
@@ -206,19 +247,22 @@ public abstract class Application {
      *
      * <p>
      * Typical usage is:
-     * <ul>
      * <pre>
-     * public static void main(String[] args) {
-     *     Application.launch(args);
-     * }
+     *     public static void main(String[] args) {
+     *         Application.launch(args);
+     *     }
      * </pre>
-     * </ul>
      *
      * @param args the command line arguments passed to the application.
      *             An application may get these parameters using the
      *             {@link #getParameters()} method.
      *
      * @throws IllegalStateException if this method is called more than once.
+     * @throws RuntimeException if there is an error launching the
+     * JavaFX runtime, or if the application class cannot be constructed
+     * (e.g., if the class is not public or is not in an exported package), or
+     * if an Exception or Error is thrown by the Application constructor, init
+     * method, start method, or stop method.
      */
     public static void launch(String... args) {
         // Figure out the right class to call
@@ -283,6 +327,7 @@ public abstract class Application {
      * method.
      * An application may construct other JavaFX objects in this method.
      * </p>
+     * @throws java.lang.Exception if something goes wrong
      */
     public void init() throws Exception {
     }
@@ -301,6 +346,7 @@ public abstract class Application {
      * the browser if the application was launched as an applet.
      * Applications may create other stages, if needed, but they will not be
      * primary stages and will not be embedded in the browser.
+     * @throws java.lang.Exception if something goes wrong
      */
     public abstract void start(Stage primaryStage) throws Exception;
 
@@ -315,6 +361,7 @@ public abstract class Application {
      * <p>
      * NOTE: This method is called on the JavaFX Application Thread.
      * </p>
+     * @throws java.lang.Exception if something goes wrong
      */
     public void stop() throws Exception {
     }

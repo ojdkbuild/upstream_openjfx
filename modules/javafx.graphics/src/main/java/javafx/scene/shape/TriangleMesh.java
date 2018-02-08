@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2013, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -318,12 +318,13 @@ public class TriangleMesh extends Mesh {
      * geometry. The face smoothing group value is used to control the smoothing
      * between adjacent faces.
      *
-     * <p> The face smoothing group value is represented by an array of bits and up to
+     * <p>
+     * {@literal The face smoothing group value is represented by an array of bits and up to
      * 32 unique groups is possible; (1 << 0) to (1 << 31). The face smoothing
      * group value can range from 0 (no smoothing group) to all 32 groups. A face
      * can belong to zero or more smoothing groups. A face is a member of group
      * N if bit N is set, for example, groups |= (1 << N). A value of 0 implies
-     * no smoothing group or hard edges.
+     * no smoothing group or hard edges.}
      * Smoothing is applied when adjacent pair of faces shared a smoothing group.
      * Otherwise the faces are rendered with a hard edge between them.
      *
@@ -335,6 +336,7 @@ public class TriangleMesh extends Mesh {
      *
      * <p> This faceSmoothingGroups has no effect on its {@code TriangleMesh} if
      * it is of {@code VertexFormat.POINT_NORMAL_TEXCOORD} format.
+     * @return the {@code faceSmoothingGroups} array of this {@code TriangleMesh}
      */
     public final ObservableIntegerArray getFaceSmoothingGroups() {
         return faceSmoothingGroups;
@@ -550,8 +552,9 @@ public class TriangleMesh extends Mesh {
         if (isDirty() || cachedBounds == null) {
             cachedBounds = new BoxBounds();
             if (validate()) {
-                final double len = points.size();
-                for (int i = 0; i < len; i += getVertexFormat().getPointElementSize()) {
+                final int len = points.size();
+                final int pointElementSize = getVertexFormat().getPointElementSize();
+                for (int i = 0; i < len; i += pointElementSize) {
                     cachedBounds.add(points.get(i), points.get(i + 1), points.get(i + 2));
                 }
             }

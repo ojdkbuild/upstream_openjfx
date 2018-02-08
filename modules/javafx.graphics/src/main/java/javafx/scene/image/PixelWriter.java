@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2014, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -90,6 +90,7 @@ public interface PixelWriter {
      * by the number of buffer data elements defined by
      * {@code scanlineStride}.
      *
+     * @param <T> the type of the buffer
      * @param x the X coordinate of the rectangular region to write
      * @param y the Y coordinate of the rectangular region to write
      * @param w the width of the rectangular region to write
@@ -190,8 +191,8 @@ public interface PixelWriter {
      * This method performs an operation which is semantically equivalent to
      * (though likely much faster than) this pseudo-code:
      * <pre>
-     *     for (int y = 0; y < h, y++) {
-     *         for (int x = 0; x < w; x++) {
+     *     for (int y = 0; y &lt; h, y++) {
+     *         for (int x = 0; x &lt; w; x++) {
      *             setArgb(dstx + x, dsty + y,
      *                     reader.getArgb(srcx + x, srcy + y));
      *         }

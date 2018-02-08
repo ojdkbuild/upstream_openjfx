@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2014, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -166,6 +166,7 @@ public class ChoiceDialog<T> extends Dialog<T> {
 
     /**
      * Returns the currently selected item in the dialog.
+     * @return the currently selected item
      */
     public final T getSelectedItem() {
         return comboBox.getSelectionModel().getSelectedItem();
@@ -173,6 +174,7 @@ public class ChoiceDialog<T> extends Dialog<T> {
 
     /**
      * Returns the property representing the currently selected item in the dialog.
+     * @return the currently selected item property
      */
     public final ReadOnlyObjectProperty<T> selectedItemProperty() {
         return comboBox.getSelectionModel().selectedItemProperty();
@@ -190,6 +192,7 @@ public class ChoiceDialog<T> extends Dialog<T> {
      * Returns the list of all items that will be displayed to users. This list
      * can be modified by the developer to add, remove, or reorder the items
      * to present to the user.
+     * @return the list of all items that will be displayed to users
      */
     public final ObservableList<T> getItems() {
         return comboBox.getItems();
@@ -197,6 +200,7 @@ public class ChoiceDialog<T> extends Dialog<T> {
 
     /**
      * Returns the default choice that was specified in the constructor.
+     * @return the default choice
      */
     public final T getDefaultChoice() {
         return defaultChoice;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -53,12 +53,12 @@ import javafx.beans.property.IntegerPropertyBase;
  * pre-rolled in memory to play for a short amount of time so it is much more
  * memory efficient for long clips, especially if they are compressed.
  * <br>
- * <p>Example usage:
- * <pre><code>
- * AudioClip plonkSound = new AudioClip("http://somehost/path/plonk.aiff");
- * plonkSound.play();
- * </code></pre>
- * </p>
+ * <p>Example usage:</p>
+ * <pre>{@code
+ *     AudioClip plonkSound = new AudioClip("http://somehost/path/plonk.aiff");
+ *     plonkSound.play();
+ * }</pre>
+ *
  * @since JavaFX 2.0
  */
 

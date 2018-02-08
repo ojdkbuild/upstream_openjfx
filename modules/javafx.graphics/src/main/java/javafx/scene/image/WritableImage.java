@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2014, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -88,6 +88,7 @@ public class WritableImage extends Image {
      * always return valid objects.
      * The dimensions must both be positive numbers <code>(&gt;&nbsp;0)</code>.
      *
+     * @param reader the {@code PixelReader} to construct from
      * @param width the desired width of the writable image and the
      *        width of the region to be read from the {@code reader}
      * @param height the desired height of the desired image and the
@@ -114,6 +115,7 @@ public class WritableImage extends Image {
      * always return valid objects.
      * The dimensions must both be positive numbers <code>(&gt;&nbsp;0)</code>.
      *
+     * @param reader the {@code PixelReader} to construct from
      * @param x the X coordinate of the upper left corner of the region to
      *        read from the {@code reader}
      * @param y the Y coordinate of the upper left corner of the region to

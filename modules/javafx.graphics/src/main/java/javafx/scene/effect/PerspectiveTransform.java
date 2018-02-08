@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -55,7 +55,7 @@ import com.sun.javafx.scene.BoundsAccessor;
  *
  * <p>
  * Example:
- * <pre><code>
+ * <pre>{@code
  * PerspectiveTransform perspectiveTrasform = new PerspectiveTransform();
  * perspectiveTrasform.setUlx(10.0);
  * perspectiveTrasform.setUly(10.0);
@@ -85,10 +85,11 @@ import com.sun.javafx.scene.BoundsAccessor;
  * text.setFont(Font.font(null, FontWeight.BOLD, 36));
  *
  * g.getChildren().addAll(rect, text);
- * </pre></code>
+ * }</pre>
  * <p> The code above produces the following: </p>
  * <p>
- * <img src="doc-files/perspectivetransform.png"/>
+ * <img src="doc-files/perspectivetransform.png" alt="The visual effect of
+ * PerspectiveTransform on text">
  * </p>
  * @since JavaFX 2.0
  */

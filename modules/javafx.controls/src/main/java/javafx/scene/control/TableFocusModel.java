@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -53,6 +53,10 @@ public abstract class TableFocusModel<T, TC extends TableColumnBase<T,?>> extend
     /**
      * Tests whether the row / cell at the given location currently has the
      * focus within the UI control.
+     * @param row the row
+     * @param column the column
+     * @return true if the row / cell at the given location currently has the
+     * focus within the UI control
      */
     public abstract boolean isFocused(int row, TC column);
 

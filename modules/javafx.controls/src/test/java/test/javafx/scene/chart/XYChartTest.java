@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -34,7 +34,7 @@ import javafx.scene.chart.Axis.TickMark;
 import javafx.css.ParsedValue;
 import javafx.css.CssMetaData;
 import javafx.css.StyleableProperty;
-import javafx.css.CssParser;
+import javafx.css.CssParserShim;
 import javafx.scene.Node;
 import javafx.scene.ParentShim;
 import javafx.scene.Scene;
@@ -86,7 +86,7 @@ public class XYChartTest extends ChartTestBase {
         assertEquals(10, new Double(AxisShim.get_measure(yaxis).getFont().getSize()).intValue());
 
         // set tick label font via css and test if ticklabelfont, measure and tick textnode follow.
-        ParsedValue pv = new CssParser().parseExpr("-fx-tick-label-font","0.916667em System");
+        ParsedValue pv = new CssParserShim().parseExpr("-fx-tick-label-font","0.916667em System");
         Object val = pv.convert(null);
         CssMetaData prop = ((StyleableProperty)yaxis.tickLabelFontProperty()).getCssMetaData();
         prop.set(yaxis, val, null);

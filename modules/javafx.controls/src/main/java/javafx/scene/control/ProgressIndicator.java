@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -90,6 +90,7 @@ public class ProgressIndicator extends Control {
 
     /**
      * Creates a new ProgressIndicator with the given progress value.
+     * @param progress the progress, represented as a value between 0 and 1
      */
     public ProgressIndicator(double progress) {
         // focusTraversable is styleable through css. Calling setFocusTraversable

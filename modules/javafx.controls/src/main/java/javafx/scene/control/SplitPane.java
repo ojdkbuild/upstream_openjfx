@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -253,6 +253,7 @@ public class SplitPane extends Control {
      * {@link javafx.geometry.Orientation#VERTICAL} will result in the nodes being
      * stacked vertically.</p>
      *
+     * @param value the orientation value
      */
     public final void setOrientation(Orientation value) {
         orientationProperty().set(value);
@@ -268,6 +269,7 @@ public class SplitPane extends Control {
 
     /**
      * The orientation for the SplitPane.
+     * @return the orientation property for the SplitPane
      */
     public final ObjectProperty<Orientation> orientationProperty() {
         if (orientation == null) {

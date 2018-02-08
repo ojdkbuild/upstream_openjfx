@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -73,7 +73,7 @@ path.getElements().add(arcTo);
  * {@code xAxisRotation} defines the rotation of the ellipse in degrees.
  * </p>
  * <p>
- * <img src="doc-files/arcto.png"/>
+ * <img src="doc-files/arcto.png" alt="A visual rendering of ArcTo shape">
  * </p>
  * <p>
  * In most cases, there are four options of how to draw an arc from
@@ -86,7 +86,8 @@ path.getElements().add(arcTo);
  * Following images demonstrate this behavior:
  * </p>
  * <p>
- * <img src="doc-files/arcto-flags.png"/>
+ * <img src="doc-files/arcto-flags.png" alt="A visual rendering of ArcTo shape
+ * with setting to its different properties">
  * </p>
  * @since JavaFX 2.0
  */

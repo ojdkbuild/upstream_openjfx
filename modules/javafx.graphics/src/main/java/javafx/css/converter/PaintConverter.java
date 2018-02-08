@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -78,7 +78,7 @@ public final class PaintConverter extends StyleConverter<ParsedValue<?, Paint>, 
     }
 
     /**
-     * Convert [<paint]+ to Paint[]
+     * Converts an array of parsed values to an array of Paint objects.
      */
     public static final class SequenceConverter extends StyleConverter<ParsedValue<?, Paint>[], Paint[]> {
 

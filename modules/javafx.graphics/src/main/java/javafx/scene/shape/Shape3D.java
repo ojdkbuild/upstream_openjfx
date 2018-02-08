@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2013, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -167,11 +167,11 @@ public abstract class Shape3D extends Node {
 
     /**
      * Defines the draw mode used to render this {@code Shape3D}.
-     * {@link DrawMode.LINE} is not available on embedded platforms.
-     * If {@code drawMode} is set to {@link DrawMode.LINE} on an embedded
-     * platform the default value of {@link DrawMode.FILL} will be used instead.
+     * {@link DrawMode#LINE} is not available on embedded platforms.
+     * If {@code drawMode} is set to {@link DrawMode#LINE} on an embedded
+     * platform the default value of {@link DrawMode#FILL} will be used instead.
      *
-     * @defaultValue DrawMode.FILL
+     * @defaultValue {@link DrawMode#FILL}
      */
     private ObjectProperty<DrawMode> drawMode;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -46,7 +46,7 @@ import com.sun.scenario.effect.PhongLighting;
  *
  * <p>
  * Example:
- * <pre><code>
+ * <pre>{@code
  * Light.Distant light = new Light.Distant();
  * light.setAzimuth(-135.0);
  *
@@ -63,10 +63,10 @@ import com.sun.scenario.effect.PhongLighting;
  * text.setTextOrigin(VPos.TOP);
  *
  * text.setEffect(lighting);
- * </pre></code>
+ * }</pre>
  * <p> The code above produces the following: </p>
  * <p>
- * <img * src="doc-files/lighting.png"/>
+ * <img src="doc-files/lighting.png" alt="The visual effect of Lighting on text">
  * </p>
  * @since JavaFX 2.0
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -117,6 +117,7 @@ public class MenuItem implements EventTarget, Styleable {
 
     /**
      * Constructs a MenuItem and sets the display text with the specified text
+     * @param text the display text
      * @see #setText
      */
     public MenuItem(String text) {
@@ -126,6 +127,8 @@ public class MenuItem implements EventTarget, Styleable {
     /**
      * Constructor s MenuItem and sets the display text with the specified text
      * and sets the graphic {@link Node} to the given node.
+     * @param text the display text
+     * @param graphic the graphic node
      * @see #setText
      * @see #setGraphic
      */
@@ -581,6 +584,7 @@ public class MenuItem implements EventTarget, Styleable {
      * {@inheritDoc}
      * @since JavaFX 8.0
      */
+    @Override
     public final ObservableSet<PseudoClass> getPseudoClassStates() {
         return FXCollections.emptyObservableSet();
     }

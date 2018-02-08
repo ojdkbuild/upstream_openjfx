@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -88,6 +88,7 @@ public interface PixelReader {
      * by the number of buffer data elements defined by
      * {@code scanlineStride}.
      *
+     * @param <T> the type of the buffer
      * @param x the X coordinate of the rectangular region to read
      * @param y the Y coordinate of the rectangular region to read
      * @param w the width of the rectangular region to read

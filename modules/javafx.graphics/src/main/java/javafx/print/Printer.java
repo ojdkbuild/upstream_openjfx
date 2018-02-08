@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2013, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -95,6 +95,7 @@ public final class Printer {
     /**
      * A read only object property representing the current default printer.
      * If there are no installed printers, the wrapped value will be null.
+     * @return the current default printer
      * @throws SecurityException if the application does not
      * have permission to browse printers.
      */

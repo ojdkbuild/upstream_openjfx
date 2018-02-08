@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -84,7 +84,7 @@ public abstract class SingleSelectionModel<T> extends SelectionModel<T> {
 
     /**
      * <p>This method will return true if the given index is the currently
-     * selected index in this SingleSelectionModel.</code>.
+     * selected index in this SingleSelectionModel.
      *
      * @param index The index to check as to whether it is currently selected
      *      or not.

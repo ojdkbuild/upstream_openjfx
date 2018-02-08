@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2013, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -89,6 +89,7 @@ public final class PageRange {
      * <code>IntegerProperty</code> representing the starting
      * page number of the range. See {@link getStartPage getStartPage()}
      * for more information.
+     * @return the starting page number of the range
      */
     public ReadOnlyIntegerProperty startPageProperty() {
         return startPageImplProperty().getReadOnlyProperty();
@@ -124,6 +125,7 @@ public final class PageRange {
      * <code>IntegerProperty</code> representing the ending
      * page number of the range. See {@link #getEndPage getEndPage()}
      * for more information.
+     * @return the ending page number of the range
      */
     public ReadOnlyIntegerProperty endPageProperty() {
         return endPageImplProperty().getReadOnlyProperty();

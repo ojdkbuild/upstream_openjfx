@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -238,7 +238,11 @@ public class Stylesheet {
     private String[] stringStore;
     final String[] getStringStore() { return stringStore; }
 
-    /** Load a binary stylesheet file from a input stream */
+    /** Load a binary stylesheet file from a input stream.
+     * @param url the URL from which the stylesheet will be loaded
+     * @return the constructed stylesheet
+     * @throws java.io.IOException the exception
+     */
     public static Stylesheet loadBinary(URL url) throws IOException {
 
         if (url == null) return null;
@@ -292,7 +296,7 @@ public class Stylesheet {
      * Convert the .css file referenced by urlIn to binary format and write to urlOut.
      * @param source is the JavaFX .css file to convert
      * @param destination is the file to which the binary conversion is written
-     * @throws IOException
+     * @throws IOException the exception
      * @throws IllegalArgumentException if either parameter is null, if source and destination are the same,
      * if source cannot be read, or if destination cannot be written.
      */

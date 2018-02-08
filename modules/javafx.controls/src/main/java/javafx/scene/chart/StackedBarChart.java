@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -233,7 +233,7 @@ public class StackedBarChart<X, Y> extends XYChart<X, Y> {
         }
     }
 
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override protected void dataItemChanged(Data<X, Y> item) {
         double barVal;
         double currentVal;
@@ -266,7 +266,7 @@ public class StackedBarChart<X, Y> extends XYChart<X, Y> {
         }
     }
 
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override protected void seriesAdded(Series<X, Y> series, int seriesIndex) {
         // handle any data already in series
         // create entry in the map
@@ -336,7 +336,7 @@ public class StackedBarChart<X, Y> extends XYChart<X, Y> {
         }
     }
 
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override protected void updateAxisRange() {
         // This override is necessary to update axis range based on cumulative Y value for the
         // Y axis instead of the inherited way where the max value in the data range is used.
@@ -377,7 +377,7 @@ public class StackedBarChart<X, Y> extends XYChart<X, Y> {
         }
     }
 
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override protected void layoutPlotChildren() {
         double catSpace = categoryAxis.getCategorySpacing();
         // calculate bar spacing

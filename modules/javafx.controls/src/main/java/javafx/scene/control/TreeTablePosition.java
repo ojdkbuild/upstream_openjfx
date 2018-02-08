@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -111,6 +111,7 @@ public class TreeTablePosition<S,T> extends TablePositionBase<TreeTableColumn<S,
 
     /**
      * The TreeTableView that this TreeTablePosition is related to.
+     * @return the TreeTableView that this TreeTablePosition is related to
      */
     public final TreeTableView<S> getTreeTableView() {
         return controlRef.get();
@@ -123,6 +124,7 @@ public class TreeTablePosition<S,T> extends TablePositionBase<TreeTableColumn<S,
 
     /**
      * Returns the {@link TreeItem} that backs the {@link #getRow()} row}.
+     * @return the {@link TreeItem} that backs the {@link #getRow()} row}
      */
     public final TreeItem<S> getTreeItem() {
         return treeItemRef.get();

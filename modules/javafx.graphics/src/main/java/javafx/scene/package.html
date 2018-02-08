@@ -1,4 +1,32 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
+
+<!--
+/*
+ * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 only, as
+ * published by the Free Software Foundation.  Oracle designates this
+ * particular file as subject to the "Classpath" exception as provided
+ * by Oracle in the LICENSE file that accompanied this code.
+ *
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 2 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version
+ * 2 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
+ * or visit www.oracle.com if you need additional information or have any
+ * questions.
+ */
+-->
+
 <html>
 <head>
   <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
@@ -23,7 +51,7 @@ that contains a list of "root" {@code Nodes} to be rendered onto
 the scene. This sequence of {@code Nodes} is the scene graph for
 this {@code Scene}.
 A {@code Scene} is rendered onto a {@link javafx.stage.Stage}, which is the
-top-level container for JavaFX content.<br><br></li>
+top-level container for JavaFX content.</li>
 
 <li>{@link javafx.scene.Node Node} &ndash; Abstract base class for all nodes in the
 scene graph. Each node is either a "leaf" node with no child nodes or
@@ -51,11 +79,10 @@ list of a {@link javafx.scene.Parent Parent} or as the clip of a
 {@link javafx.scene.Node Node}.
 See the {@link javafx.scene.Node Node} class for more details on these restrictions.</p>
 
-<h4>Example</h4>
+<h3>Example</h3>
 
 <p>An example JavaFX scene graph is as follows:</p>
 
-<ul>
 <pre>
 package example;
 
@@ -95,13 +122,12 @@ public class Example extends Application {
     }
 }
 </pre>
-</ul>
 
 <p>The above example will generate the following image:</p>
 
-<ul><img src="doc-files/Scene1.png"/></ul>
+<p><img src="doc-files/Scene1.png" alt="A visual rendering of the JavaFX Scene example"></p>
 
-<h4>Coordinate System and Transformations</h4>
+<h3>Coordinate System and Transformations</h3>
 
 <p>The {@code Node} class defines a traditional computer graphics "local"
 coordinate system in which the {@code x} axis increases to the right and the
@@ -120,7 +146,7 @@ viewed from the parent of the node that has been transformed.</p>
 
 <p>See the {@link javafx.scene.Node Node} class for more information on transformations.</p>
 
-<h4>Bounding Rectangle</h4>
+<h3>Bounding Rectangle</h3>
 
 <p>Since every {@code Node} has transformations, every Node's geometric
 bounding rectangle can be described differently depending on whether
@@ -132,12 +158,12 @@ specifies these bounding rectangles:</p>
 <ul>
 
 <li>{@code boundsInLocal} &ndash; specifies the bounds of the
-{@code Node} in untransformed local coordinates.<br><br></li>
+{@code Node} in untransformed local coordinates.</li>
 
 <li>{@code boundsInParent} &ndash; specifies the bounds of the
 {@code Node} after all transformations have been applied.
 It is called "boundsInParent" because the
-rectangle will be relative to the parent's coordinate system.<br><br></li>
+rectangle will be relative to the parent's coordinate system.</li>
 
 <li>{@code layoutBounds} &ndash; specifies the rectangular bounds of
 the {@code Node} that should be used as the basis for layout
@@ -149,7 +175,7 @@ only the shape geometry.</li>
 
 <p>See the {@link javafx.scene.Node Node} class for more information on bounding rectangles.</p>
 
-<h4>CSS</h4>
+<h3>CSS</h3>
 <p>
 The JavaFX Scene Graph provides the facility to style nodes using
 CSS (Cascading Style Sheets).

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2013, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -103,6 +103,9 @@ public class Box extends Shape3D {
     /**
      * Creates a new instance of {@code Box} of dimension width by height
      * by depth.
+     * @param width the width of this box
+     * @param height the height of this box
+     * @param depth the depth of this box
      */
     public Box(double width, double height, double depth) {
         setWidth(width);

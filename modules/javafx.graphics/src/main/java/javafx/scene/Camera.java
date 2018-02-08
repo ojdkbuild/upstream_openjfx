@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -74,16 +74,18 @@ import sun.util.logging.PlatformLogger;
  * <p>
  * The following pseudo code is the math used to compute the near and far clip
  * distances in the scene coordinate space:
+ * </p>
  *
- * <ul><pre>
+ * <pre>
  * final double tanOfHalfFOV = Math.tan(Math.toRadians(FOV) / 2.0);
  * final double halfHeight = HEIGHT / 2;
  * final double focalLenght = halfHeight / tanOfHalfFOV;
  * final double eyePositionZ = -1.0 * focalLenght;
  * final double nearClipDistance = focalLenght * NEAR + eyePositionZ;
  * final double farClipDistance = focalLenght * FAR + eyePositionZ;
- * </pre></ul>
+ * </pre>
  *
+ * <p>
  * where {@code FOV} is {@code fieldOfView} in degrees,
  * {@code NEAR} is {@code nearClip} specified in eye space,
  * and {@code FAR} is {@code farClip} specified in eye space.

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2009, 2014, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2009, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -43,9 +43,8 @@ public enum StrokeType {
      * <p>
      * The image shows a shape without stroke and the same shape with a thick
      * inside stroke applied.
-     * </p><p>
-     * <img src="doc-files/stroketype-inside.png"/>
-     * </p>
+     * <p> <img src="doc-files/stroketype-inside.png" alt="A visual rendering
+     * of StrokeType.INSIDE"> </p>
      */
     INSIDE,
 
@@ -59,9 +58,8 @@ public enum StrokeType {
      * <p>
      * The image shows a shape without stroke and the same shape with a thick
      * outside stroke applied.
-     * </p><p>
-     * <img src="doc-files/stroketype-outside.png"/>
-     * </p>
+     * <p> <img src="doc-files/stroketype-outside.png" alt="A visual rendering
+     * of StrokeType.OUTSIDE"> </p>
      */
     OUTSIDE,
 
@@ -76,9 +74,8 @@ public enum StrokeType {
      * <p>
      * The image shows a shape without stroke and the same shape with a thick
      * centered stroke applied.
-     * </p><p>
-     * <img src="doc-files/stroketype-centered.png"/>
-     * </p>
+     * <p> <img src="doc-files/stroketype-centered.png" alt="A visual rendering
+     * of StrokeType.CENTERED"> </p>
      */
     CENTERED
 }

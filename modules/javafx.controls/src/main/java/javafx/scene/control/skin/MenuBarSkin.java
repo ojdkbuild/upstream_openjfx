@@ -148,6 +148,7 @@ public class MenuBarSkin extends SkinBase<MenuBar> {
     private EventHandler<MouseEvent> mouseEventHandler;
     private ChangeListener<Boolean> menuBarFocusedPropertyListener;
     private ChangeListener<Scene> sceneChangeListener;
+    private ChangeListener<Boolean> menuVisibilityChangeListener;
 
     private boolean pendingDismiss = false;
 
@@ -347,15 +348,14 @@ public class MenuBarSkin extends SkinBase<MenuBar> {
             }
         });
 
+        menuVisibilityChangeListener = (ov, t, t1) -> {
+            rebuildUI();
+        };
+
         rebuildUI();
         control.getMenus().addListener((ListChangeListener<Menu>) c -> {
             rebuildUI();
         });
-        for (final Menu menu : getSkinnable().getMenus()) {
-            menu.visibleProperty().addListener((ov, t, t1) -> {
-                rebuildUI();
-            });
-        }
 
         if (Toolkit.getToolkit().getSystemMenu().isSupported()) {
             control.useSystemMenuBarProperty().addListener(valueModel -> {
@@ -492,6 +492,11 @@ public class MenuBarSkin extends SkinBase<MenuBar> {
     // RT-22480: This is intended as private API for SceneBuilder,
     // pending fix for RT-19857: Keeping menu in the Mac menu bar when
     // there is no more stage
+    /**
+     * Set the default system menu bar. This allows an application to keep menu
+     * in the system menu bar after the last Window is closed.
+     * @param menuBar the menu bar
+     */
     public static void setDefaultSystemMenuBar(final MenuBar menuBar) {
         if (Toolkit.getToolkit().getSystemMenu().isSupported()) {
             wrappedDefaultMenus.clear();
@@ -815,6 +820,8 @@ public class MenuBarSkin extends SkinBase<MenuBar> {
         for (Menu m : getSkinnable().getMenus()) {
             // remove action listeners
             updateActionListeners(m, false);
+
+            m.visibleProperty().removeListener(menuVisibilityChangeListener);
         }
         for (Node n : container.getChildren()) {
             // Stop observing menu's showing & disable property for changes.
@@ -915,6 +922,9 @@ public class MenuBarSkin extends SkinBase<MenuBar> {
 
         getSkinnable().focusedProperty().addListener(menuBarFocusedPropertyListener);
         for (final Menu menu : getSkinnable().getMenus()) {
+
+            menu.visibleProperty().addListener(menuVisibilityChangeListener);
+
             if (!menu.isVisible()) continue;
             final MenuBarButton menuButton = new MenuBarButton(this, menu);
             menuButton.setFocusTraversable(false);
@@ -1213,6 +1223,8 @@ public class MenuBarSkin extends SkinBase<MenuBar> {
     /**
      * Returns the CssMetaData associated with this class, which may include the
      * CssMetaData of its superclasses.
+     * @return the CssMetaData associated with this class, which may include the
+     * CssMetaData of its superclasses
      */
     public static List<CssMetaData<? extends Styleable, ?>> getClassCssMetaData() {
         return STYLEABLES;

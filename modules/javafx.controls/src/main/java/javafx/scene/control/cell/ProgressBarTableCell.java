@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2014, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -51,6 +51,7 @@ public class ProgressBarTableCell<S> extends TableCell<S, Double> {
      * value as it proceeds from 0.0 to 1.0. If the value is -1, the progress
      * bar will appear indeterminate.
      *
+     * @param <S> The type of the TableView generic type
      * @return A {@link Callback} that can be inserted into the
      *      {@link TableColumn#cellFactoryProperty() cell factory property} of a
      *      TableColumn, that enables visualisation of a Number as it progresses

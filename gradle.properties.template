@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2013, 2016, Oracle and/or its affiliates. All rights reserved.
+# Copyright (c) 2013, 2017, Oracle and/or its affiliates. All rights reserved.
 # DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
 #
 # This code is free software; you can redistribute it and/or modify it
@@ -188,6 +188,11 @@
 # This flag is disabled by default. Uncomment this to turn it on.
 
 #INCREMENTAL = true
+
+# Specify an option to -Xdoclint, such as "none" or "all" (default),
+# used by the javadoc task.
+
+#DOC_LINT = none
 
 # Specify compiler LINT arguments. These values are defined by the javac compiler. You can
 # study the list of available options here https://docs.oracle.com/javase/7/docs/technotes/tools/solaris/javac.html

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -42,7 +42,9 @@ import java.security.PrivilegedExceptionAction;
 import java.security.ProtectionDomain;
 
 /**
- * Convert url("<path>") a URL string resolved relative to the location of the stylesheet.
+ * Converts a parsed value representing  URL to a URL string that is
+ * resolved relative to the location of the stylesheet.
+ * The input value is in the form: {@code url("<path>")}.
  *
  * @since 9
  */

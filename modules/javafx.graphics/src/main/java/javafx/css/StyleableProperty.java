@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -44,6 +44,7 @@ import javafx.beans.value.WritableValue;
  * </ol>
  * <p>The {@link javafx.css.StyleablePropertyFactory StyleablePropertyFactory}
  * greatly simplifies creating a StyleableProperty and its corresponding CssMetaData.</p>
+ * @param <T> the specific property
  * @since JavaFX 8.0
  * @see javafx.css.StyleablePropertyFactory
  */
@@ -51,18 +52,22 @@ public interface StyleableProperty<T> extends WritableValue<T> {
 
     /**
      * This method is called from CSS code to set the value of the property.
+     * @param origin the origin
+     * @param value the value
      */
     void applyStyle(StyleOrigin origin, T value);
 
     /**
      * Tells the origin of the value of the property. This is needed to
      * determine whether or not CSS can override the value.
+     * @return the style origin
      */
     StyleOrigin getStyleOrigin();
 
     /**
      * Reflect back the CssMetaData that corresponds to this
      * <code>javafx.beans.property.StyleableProperty</code>
+     * @return the corresponding CssMetaData
      */
     CssMetaData<? extends Styleable, T> getCssMetaData();
 

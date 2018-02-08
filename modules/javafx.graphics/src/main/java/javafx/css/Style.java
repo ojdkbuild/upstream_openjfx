@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2008, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -36,6 +36,7 @@ final public class Style {
     /**
      * A selector might have more than one selector. This is the one that was
      * matched.
+     * @return the matched selector
      */
     public Selector getSelector() {
         return selector;
@@ -45,6 +46,7 @@ final public class Style {
      * The Declaration that is the source of the style that is about
      * to be applied or has just been applied. May be null if the
      * value comes from the CSSProperty's initial (default) value.
+     * @return the declaration
      */
     public Declaration getDeclaration() {
         return declaration;

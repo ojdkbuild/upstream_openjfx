@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2008, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -49,6 +49,7 @@ public enum FontPosture {
      * Returns {@code FontPosture} by its name.
      *
      * @param name name of the {@code FontPosture}
+     * @return the FontPosture by its name
      */
     public static FontPosture findByName(String name) {
         if (name == null) return null;

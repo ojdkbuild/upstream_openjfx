@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2008, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -78,6 +78,10 @@ abstract public class Selector {
     /**
      * Determines whether the current state of the node and its parents
      * matches the pseudo-classes defined (if any) for this selector.
+     * @param styleable the styleable
+     * @param state the state
+     * @return {@code true} if the current state of the node and its parents
+     * matches the pseudo-classes defined (if any) for this selector
      */
     public abstract boolean stateMatches(Styleable styleable, Set<PseudoClass> state);
 

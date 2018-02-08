@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -38,8 +38,7 @@ import javafx.geometry.Orientation;
  * This is provided for convenience as groups of {@link MenuItem menuitems} can be separated
  * by a separator. Instead of a creating a {@link CustomMenuItem}  for this purpose, the user
  * can use this class as indicated below.
- * <p>
- * <p>
+ *
 <pre><code>
 SeparatorMenuItem separatorMenuItem = new SeparatorMenuItem();
 </code></pre>

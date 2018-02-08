@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -53,6 +53,7 @@ public interface Toggle {
 
     /**
      * The {@link ToggleGroup} to which this {@code Toggle} belongs.
+     * @return the toggle group property
      */
     ObjectProperty<ToggleGroup> toggleGroupProperty();
 
@@ -71,6 +72,7 @@ public interface Toggle {
 
     /**
      * The selected state for this {@code Toggle}.
+     * @return the selected property
      */
     BooleanProperty selectedProperty();
 

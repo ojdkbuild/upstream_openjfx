@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -49,6 +49,7 @@ import javafx.scene.control.skin.SplitMenuButtonSkin;
  *
  * <p>Example:</p>
  * <pre>
+ * {@literal
  * SplitMenuButton m = new SplitMenuButton();
  * m.setText("Shutdown");
  * m.getItems().addAll(new MenuItem("Logout"), new MenuItem("Sleep"));
@@ -57,8 +58,8 @@ import javafx.scene.control.skin.SplitMenuButtonSkin;
  *         System.out.println("Shutdown");
  *     }
  * });
+ * }
  * </pre>
- * <p>
  *
  * <p>
  * MnemonicParsing is enabled by default for SplitMenuButton.

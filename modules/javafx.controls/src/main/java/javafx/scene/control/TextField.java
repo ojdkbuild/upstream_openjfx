@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -153,6 +153,7 @@ public class TextField extends TextInputControl {
 
     /**
      * Returns the character sequence backing the text field's content.
+     * @return the character sequence backing the text field's content
      */
     public CharSequence getCharacters() {
         return ((TextFieldContent)getContent()).characters;
@@ -207,7 +208,7 @@ public class TextField extends TextInputControl {
 
     /**
      * The action handler associated with this text field, or
-     * <tt>null</tt> if no action handler is assigned.
+     * {@code null} if no action handler is assigned.
      *
      * The action handler is normally called when the user types the ENTER key.
      */
@@ -234,6 +235,7 @@ public class TextField extends TextInputControl {
     /**
      * Specifies how the text should be aligned when there is empty
      * space within the TextField.
+     * @return the alignment property
      * @since JavaFX 2.1
      */
     public final ObjectProperty<Pos> alignmentProperty() {

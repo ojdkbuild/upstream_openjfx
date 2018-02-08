@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -72,7 +72,7 @@ public abstract class ValueAxis<T extends Number> extends Axis<T> {
     // -------------- PRIVATE PROPERTIES -------------------------------------------------------------------------------
 
     /**
-     * The current value for the lowerBound of this axis, i.e. min value.
+     * The current value for the lowerBound of this axis (minimum value).
      * This may be the same as lowerBound or different. It is used by NumberAxis to animate the
      * lowerBound from the old value to the new value.
      */
@@ -120,7 +120,7 @@ public abstract class ValueAxis<T extends Number> extends Axis<T> {
     public final ReadOnlyDoubleProperty scaleProperty() { return scale.getReadOnlyProperty(); }
     ReadOnlyDoubleWrapper scalePropertyImpl() { return scale; }
 
-    /** The value for the upper bound of this axis, i.e. max value. This is automatically set if auto ranging is on. */
+    /** The value for the upper bound of this axis (maximum value). This is automatically set if auto ranging is on. */
     private DoubleProperty upperBound = new DoublePropertyBase(100) {
         @Override protected void invalidated() {
             if(!isAutoRanging()) {
@@ -143,7 +143,7 @@ public abstract class ValueAxis<T extends Number> extends Axis<T> {
     public final void setUpperBound(double value) { upperBound.set(value); }
     public final DoubleProperty upperBoundProperty() { return upperBound; }
 
-    /** The value for the lower bound of this axis, i.e. min value. This is automatically set if auto ranging is on. */
+    /** The value for the lower bound of this axis (minimum value). This is automatically set if auto ranging is on. */
     private DoubleProperty lowerBound = new DoublePropertyBase(0) {
         @Override protected void invalidated() {
             if(!isAutoRanging()) {

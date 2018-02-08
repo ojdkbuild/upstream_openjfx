@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -105,6 +105,8 @@ public final class KeyValue {
     /**
      * {@link Interpolator} to be used for calculating the key value along the
      * particular interval. By default, {@link Interpolator#LINEAR} is used.
+     * @return the interpolator to be used for calculating the key value along
+     * the particular interval
      */
     public Interpolator getInterpolator() {
         return interpolator;
@@ -115,6 +117,7 @@ public final class KeyValue {
     /**
      * Creates a {@code KeyValue}.
      *
+     * @param <T> the type of the {@code KeyValue}
      * @param target
      *            the target
      * @param endValue
@@ -148,6 +151,7 @@ public final class KeyValue {
     /**
      * Creates a {@code KeyValue} that uses {@link Interpolator#LINEAR}.
      *
+     * @param <T> the type of the {@code KeyValue}
      * @param target
      *            the target
      * @param endValue
@@ -161,7 +165,7 @@ public final class KeyValue {
 
     /**
      * Returns a string representation of this {@code KeyValue} object.
-     * @return a string representation of this {@code KeyValue} object.
+     * @return the string representation
      */
     @Override
     public String toString() {
@@ -171,7 +175,7 @@ public final class KeyValue {
 
     /**
      * Returns a hash code for this {@code KeyValue} object.
-     * @return a hash code for this {@code KeyValue} object.
+     * @return the hash code
      */
     @Override
     public int hashCode() {

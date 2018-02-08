@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -81,11 +81,13 @@ import javafx.util.Callback;
  * GridPane may be styled with backgrounds and borders using CSS.  See
  * {@link javafx.scene.layout.Region Region} superclass for details.</p>
  *
- * <h4>Grid Constraints</h4>
+ * <h3>Grid Constraints</h3>
  * <p>
  * A child's placement within the grid is defined by it's layout constraints:
- * <p>
+ * </p>
+ *
  * <table border="1">
+ * <caption>Grid Constraint Table</caption>
  * <tr><th>Constraint</th><th>Type</th><th>Description</th></tr>
  * <tr><td>columnIndex</td><td>integer</td><td>column where child's layout area starts.</td></tr>
  * <tr><td>rowIndex</td><td>integer</td><td>row where child's layout area starts.</td></tr>
@@ -130,7 +132,7 @@ import javafx.util.Callback;
  * </code></pre>
  *
  *
- * <h4>Row/Column Sizing</h4>
+ * <h3>Row/Column Sizing</h3>
  *
  * By default, rows and columns will be sized to fit their content;
  * a column will be wide enough to accommodate the widest child, a
@@ -160,7 +162,7 @@ import javafx.util.Callback;
  * The affected rows/columns are resized by the following priority: grow priorities, last row.
  * This is with respect to row/column constraints.
  *
- * <h4>Percentage Sizing</h4>
+ * <h3>Percentage Sizing</h3>
  *
  * Alternatively, RowConstraints and ColumnConstraints allow the size to be specified
  * as a percentage of gridpane's available space:
@@ -179,7 +181,7 @@ import javafx.util.Callback;
  * be treated as weights.  e.g.  if 3 columns are each given a widthPercent of 50,
  * then each will be allocated 1/3 of the gridpane's available width (50/(50+50+50)).
  *
- * <h4>Mixing Size Types</h4>
+ * <h3>Mixing Size Types</h3>
  *
  * An application may freely mix the size-types of rows/columns (computed from content, fixed,
  * or percentage).  The percentage rows/columns will always be allocated space first
@@ -187,12 +189,15 @@ import javafx.util.Callback;
  * The remaining space will be allocated to rows/columns given their minimum, preferred,
  * and maximum sizes and grow priorities.
  *
- * <h4>Resizable Range</h4>
+ * <h3>Resizable Range</h3>
+ * <p>
  * A gridpane's parent will resize the gridpane within the gridpane's resizable range
  * during layout.   By default the gridpane computes this range based on its content
  * and row/column constraints as outlined in the table below.
- * <p>
+ * </p>
+ *
  * <table border="1">
+ * <caption>GridPane Resize Table</caption>
  * <tr><td></td><th>width</th><th>height</th></tr>
  * <tr><th>minimum</th>
  * <td>left/right insets plus the sum of each column's min width.</td>
@@ -222,13 +227,16 @@ import javafx.util.Callback;
  * bounds may extend outside its own bounds if a child's min size prevents it from
  * being fit within it space.</p>
  *
- * <h4>Optional Layout Constraints</h4>
+ * <h3>Optional Layout Constraints</h3>
  *
+ * <p>
  * An application may set additional constraints on children to customize how the
  * child is sized and positioned within the layout area established by it's row/column
  * indices/spans:
- * <p>
+ * </p>
+ *
  * <table border="1">
+ * <caption>GridPane Constraint Table</caption>
  * <tr><th>Constraint</th><th>Type</th><th>Description</th></tr>
  * <tr><td>halignment</td><td>javafx.geometry.HPos</td><td>The horizontal alignment of the child within its layout area.</td></tr>
  * <tr><td>valignment</td><td>javafx.geometry.VPos</td><td>The vertical alignment of the child within its layout area.</td></tr>
@@ -728,6 +736,7 @@ public class GridPane extends Pane {
 
     /**
      * The width of the horizontal gaps between columns.
+     * @return the width of the horizontal gaps between columns
      */
     public final DoubleProperty hgapProperty() {
         if (hgap == null) {
@@ -762,6 +771,7 @@ public class GridPane extends Pane {
 
     /**
      * The height of the vertical gaps between rows.
+     * @return the height of the vertical gaps between rows
      */
     public final DoubleProperty vgapProperty() {
         if (vgap == null) {
@@ -796,6 +806,7 @@ public class GridPane extends Pane {
 
     /**
      * The alignment of the grid within the gridpane's width and height.
+     * @return the alignment of the grid within the gridpane's width and height
      */
     public final ObjectProperty<Pos> alignmentProperty() {
         if (alignment == null) {
@@ -839,6 +850,7 @@ public class GridPane extends Pane {
     /**
      * For debug purposes only: controls whether lines are displayed to show the gridpane's rows and columns.
      * Default is <code>false</code>.
+     * @return true if lines are displayed to show the gridpane's rows and columns
      */
     public final BooleanProperty gridLinesVisibleProperty() {
         if (gridLinesVisible == null) {
@@ -911,6 +923,7 @@ public class GridPane extends Pane {
      *
      * Index in the ObservableList denotes the row number, so the row constraint for the first row
      * is at the position of 0.
+     * @return the list of row constraints
      */
     public final ObservableList<RowConstraints> getRowConstraints() { return rowConstraints; }
     /**
@@ -944,6 +957,7 @@ public class GridPane extends Pane {
      *
      * Index in the ObservableList denotes the column number, so the column constraint for the first column
      * is at the position of 0.
+     * @return the list of column constraints
      */
     public final ObservableList<ColumnConstraints> getColumnConstraints() { return columnConstraints; }
 

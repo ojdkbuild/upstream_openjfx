@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2014, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -344,7 +344,8 @@ public class Dialog<R> implements EventTarget {
     }
 
     /**
-     * Hides the dialog.
+     * Closes this {@code Dialog}.
+     * This call is equivalent to {@link #hide}.
      */
     public final void close() {
         if (isClosing) return;
@@ -416,7 +417,7 @@ public class Dialog<R> implements EventTarget {
     }
 
     /**
-     * closes the dialog.
+     * Hides this {@code Dialog}.
      */
     public final void hide() {
         close();
@@ -521,6 +522,7 @@ public class Dialog<R> implements EventTarget {
 
         WeakReference<DialogPane> dialogPaneRef = new WeakReference<>(null);
 
+        @Override
         protected void invalidated() {
             DialogPane oldDialogPane = dialogPaneRef.get();
             if (oldDialogPane != null) {
@@ -574,6 +576,7 @@ public class Dialog<R> implements EventTarget {
      * is lower precedence than the {@link DialogPane#contentProperty() content node}, meaning
      * that if both the content node and the contentText properties are set, the
      * content text will not be displayed in a default DialogPane instance.
+     * @return the property representing the content text for the dialog pane
      */
     public final StringProperty contentTextProperty() {
         return getDialogPane().contentTextProperty();
@@ -581,6 +584,7 @@ public class Dialog<R> implements EventTarget {
 
     /**
      * Returns the currently-set content text for this DialogPane.
+     * @return the currently-set content text for this DialogPane
      */
     public final String getContentText() {
         return getDialogPane().getContentText();
@@ -591,6 +595,7 @@ public class Dialog<R> implements EventTarget {
      * is lower precedence than the {@link DialogPane#contentProperty() content node}, meaning
      * that if both the content node and the contentText properties are set, the
      * content text will not be displayed in a default DialogPane instance.
+     * @param contentText the string to show in the dialog content area
      */
     public final void setContentText(String contentText) {
         getDialogPane().setContentText(contentText);
@@ -603,6 +608,7 @@ public class Dialog<R> implements EventTarget {
      * is lower precedence than the {@link DialogPane#headerProperty() header node}, meaning
      * that if both the header node and the headerText properties are set, the
      * header text will not be displayed in a default DialogPane instance.
+     * @return a property representing the header text for the dialog pane
      */
     public final StringProperty headerTextProperty() {
         return getDialogPane().headerTextProperty();
@@ -610,6 +616,7 @@ public class Dialog<R> implements EventTarget {
 
     /**
      * Returns the currently-set header text for this DialogPane.
+     * @return the currently-set header text for this DialogPane
      */
     public final String getHeaderText() {
         return getDialogPane().getHeaderText();
@@ -620,6 +627,7 @@ public class Dialog<R> implements EventTarget {
      * is lower precedence than the {@link DialogPane#headerProperty() header node}, meaning
      * that if both the header node and the headerText properties are set, the
      * header text will not be displayed in a default DialogPane instance.
+     * @param headerText the string to show in the dialog header area
      */
     public final void setHeaderText(String headerText) {
         getDialogPane().setHeaderText(headerText);
@@ -666,6 +674,7 @@ public class Dialog<R> implements EventTarget {
      * which is intended to convert from the {@link ButtonType} that the user
      * clicked on into a value of type R. Refer to the {@link Dialog} class
      * JavaDoc for more details.
+     * @return a property representing what has been returned from the dialog
      */
     public final ObjectProperty<R> resultProperty() {
         return resultProperty;
@@ -694,6 +703,7 @@ public class Dialog<R> implements EventTarget {
      * subclass is ButtonType (which means that the result converter can be null),
      * but in some cases (where the result type, R, is not ButtonType or Void),
      * this callback must be specified.
+     * @return the API to convert the {@link ButtonType} that the user clicked on
      */
     public final ObjectProperty<Callback<ButtonType, R>> resultConverterProperty() {
         return resultConverterProperty;
@@ -711,6 +721,7 @@ public class Dialog<R> implements EventTarget {
     // --- showing
     /**
      * Represents whether the dialog is currently showing.
+     * @return the property representing whether the dialog is currently showing
      */
     public final ReadOnlyBooleanProperty showingProperty() {
         return dialog.showingProperty();
@@ -729,6 +740,7 @@ public class Dialog<R> implements EventTarget {
     // --- resizable
     /**
      * Represents whether the dialog is resizable.
+     * @return the property representing whether the dialog is resizable
      */
     public final BooleanProperty resizableProperty() {
         return dialog.resizableProperty();
@@ -758,6 +770,7 @@ public class Dialog<R> implements EventTarget {
     // --- width
     /**
      * Property representing the width of the dialog.
+     * @return the property representing the width of the dialog
      */
     public final ReadOnlyDoubleProperty widthProperty() {
         return dialog.widthProperty();
@@ -765,6 +778,7 @@ public class Dialog<R> implements EventTarget {
 
     /**
      * Returns the width of the dialog.
+     * @return the width of the dialog
      */
     public final double getWidth() {
         return widthProperty().get();
@@ -772,6 +786,7 @@ public class Dialog<R> implements EventTarget {
 
     /**
      * Sets the width of the dialog.
+     * @param width the width of the dialog
      */
     public final void setWidth(double width) {
         dialog.setWidth(width);
@@ -781,6 +796,7 @@ public class Dialog<R> implements EventTarget {
     // --- height
     /**
      * Property representing the height of the dialog.
+     * @return the property representing the height of the dialog
      */
     public final ReadOnlyDoubleProperty heightProperty() {
         return dialog.heightProperty();
@@ -788,6 +804,7 @@ public class Dialog<R> implements EventTarget {
 
     /**
      * Returns the height of the dialog.
+     * @return the height of the dialog
      */
     public final double getHeight() {
         return heightProperty().get();
@@ -795,6 +812,7 @@ public class Dialog<R> implements EventTarget {
 
     /**
      * Sets the height of the dialog.
+     * @param height the height of the dialog
      */
     public final void setHeight(double height) {
         dialog.setHeight(height);
@@ -804,6 +822,7 @@ public class Dialog<R> implements EventTarget {
     // --- title
     /**
      * Return the titleProperty of the dialog.
+     * @return the titleProperty of the dialog
      */
     public final StringProperty titleProperty(){
         return this.dialog.titleProperty();
@@ -811,13 +830,14 @@ public class Dialog<R> implements EventTarget {
 
     /**
      * Return the title of the dialog.
+     * @return the title of the dialog
      */
     public final String getTitle(){
         return this.dialog.titleProperty().get();
     }
     /**
      * Change the Title of the dialog.
-     * @param title
+     * @param title the Title of the dialog
      */
     public final void setTitle(String title){
         this.dialog.titleProperty().set(title);
@@ -836,6 +856,7 @@ public class Dialog<R> implements EventTarget {
     /**
      * The horizontal location of this {@code Dialog}. Changing this attribute
      * will move the {@code Dialog} horizontally.
+     * @return the horizontal location of this {@code Dialog}
      */
     public final ReadOnlyDoubleProperty xProperty() {
         return dialog.xProperty();
@@ -853,6 +874,7 @@ public class Dialog<R> implements EventTarget {
     /**
      * The vertical location of this {@code Dialog}. Changing this attribute
      * will move the {@code Dialog} vertically.
+     * @return the vertical location of this {@code Dialog}
      */
     public final ReadOnlyDoubleProperty yProperty() {
         return dialog.yProperty();

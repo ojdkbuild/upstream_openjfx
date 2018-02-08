@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -43,7 +43,7 @@ import com.sun.javafx.scene.BoundsAccessor;
  *
  * <p>
  * Example:
- * <pre><code>
+ * <pre>{@code
  * Text text = new Text();
  * text.setText("Blurry Text!");
  * text.setFill(Color.web("0x3b596d"));
@@ -52,12 +52,13 @@ import com.sun.javafx.scene.BoundsAccessor;
  * text.setY(50);
  *
  * text.setEffect(new GaussianBlur());
- * </pre></code>
+ * }</pre>
  * <p>
  * The code above produces the following:
  * </p>
  * <p>
- * <img src="doc-files/gaussianblur.png"/>
+ * <img src="doc-files/gaussianblur.png" alt="The visual effect of GaussianBlur
+ * on text">
  * </p>
  * @since JavaFX 2.0
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2014, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -67,15 +67,11 @@ import java.time.temporal.TemporalUnit;
  * {@link #valueFactoryProperty() value factory property}. SpinnerValueFactory
  * classes for some common types are provided with JavaFX, including:
  *
- * <br/>
- *
  * <ul>
  *     <li>{@link SpinnerValueFactory.IntegerSpinnerValueFactory}</li>
  *     <li>{@link SpinnerValueFactory.DoubleSpinnerValueFactory}</li>
  *     <li>{@link SpinnerValueFactory.ListSpinnerValueFactory}</li>
  * </ul>
- *
- * <br/>
  *
  * <p>A Spinner has a TextField child component that is responsible for displaying
  * and potentially changing the current {@link #valueProperty() value} of the
@@ -573,6 +569,7 @@ public class Spinner<T> extends Control {
     // --- editor
     /**
      * The editor used by the Spinner control.
+     * @return the editor property
      */
     public final ReadOnlyObjectProperty<TextField> editorProperty() {
         if (editor == null) {
@@ -594,6 +591,7 @@ public class Spinner<T> extends Control {
     /**
      * The prompt text to display in the {@code Spinner}, or
      * {@code null} if no prompt text is displayed.
+     * @return the prompt text property
      * @since 9
      */
     public final StringProperty promptTextProperty() { return getEditor().promptTextProperty(); }

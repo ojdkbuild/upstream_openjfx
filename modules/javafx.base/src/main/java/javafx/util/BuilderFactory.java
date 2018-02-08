@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -39,7 +39,7 @@ public interface BuilderFactory {
      * @param type the given type or null
      *
      * @return
-     * A builder for the given type, or <tt>null</tt> if this factory does not
+     * A builder for the given type, or {@code null} if this factory does not
      * produce builders for the type.
      */
     public Builder<?> getBuilder(Class<?> type);

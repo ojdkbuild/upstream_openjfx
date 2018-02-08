@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -46,15 +46,15 @@ import javafx.geometry.Point3D;
  *
  * <p>
  * For example:
- * <pre><code>
+ * <pre>{@code
  * Text text = new Text("Using Shear for pseudo-italic font");
  * text.setX(20);
  * text.setY(50);
  * text.setFont(new Font(20));
  *
  * text.getTransforms().add(new Shear(-0.35, 0));
- * </code></pre>
- * </p>
+ * }</pre>
+ *
  * @since JavaFX 2.0
  */
 public class Shear extends Transform {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -42,15 +42,18 @@ import javafx.scene.Node;
  * AnchorPanes may be styled with backgrounds and borders using CSS.  See
  * {@link javafx.scene.layout.Region Region} superclass for details.</p>
  *
- * <h4>Anchor Constraints</h4>
+ * <h3>Anchor Constraints</h3>
+ * <p>
  * The application sets anchor constraints on each child to configure the anchors
  * on one or more sides.  If a child is anchored on opposite sides (and is resizable), the
  * anchor pane will resize it to maintain both offsets, otherwise the anchor pane
  * will resize it to its preferred size.  If in the former case (anchored on opposite
  * sides) and the child is not resizable, then only the top/left anchor will be honored.
  * AnchorPane provides a static method for setting each anchor constraint.
- * <p>
+ * </p>
+ *
  * <table border="1">
+ * <caption>AnchorPane Constraint Table</caption>
  * <tr><th>Constraint</th><th>Type</th><th>Description</th></tr>
  * <tr><td>topAnchor</td><td>double</td><td>distance from the anchor pane's top insets to the child's top edge.</td></tr>
  * <tr><td>leftAnchor</td><td>double</td><td>distance from the anchor pane's left insets to the child's left edge.</td></tr>
@@ -72,12 +75,15 @@ import javafx.scene.Node;
  *     anchorPane.getChildren().addAll(list, button);
  * </code></pre>
  *
- * <h4>Resizable Range</h4>
+ * <h3>Resizable Range</h3>
+ * <p>
  * An anchor pane's parent will resize the anchor pane within the anchor pane's resizable range
  * during layout.   By default the anchor pane computes this range based on its content
  * as outlined in the table below.
- * <p>
+ * </p>
+ *
  * <table border="1">
+ * <caption>AnchorPane Resize Table</caption>
  * <tr><td></td><th>width</th><th>height</th></tr>
  * <tr><th>minimum</th>
  * <td>left/right insets plus width required to display children anchored at left/right with at least their min widths</td>

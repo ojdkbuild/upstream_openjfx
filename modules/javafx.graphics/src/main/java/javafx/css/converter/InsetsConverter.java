@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -32,7 +32,8 @@ import javafx.geometry.Insets;
 import javafx.scene.text.Font;
 
 /**
- * Convert <size>{1,4} to Insets. The size values are interpreted as
+ * Converts a parsed value array of 1 to 4 size components to an Insets.
+ * The size values are interpreted as
  * top, right, bottom, left.
  * If only top is given, that value is used on all sides.
  * If there is only top and right, then bottom is set to top and left is set to right.
@@ -72,7 +73,8 @@ public final class InsetsConverter extends StyleConverter<ParsedValue[], Insets>
     }
 
     /**
-     * Convert a <size>{1,4} [,<size>{1,4}]*  an Insets[]
+     * Converts an array of parsed values, each of which is an array
+     * of 1 to 4 size components, to an array of Insets objects.
      */
     public static final class SequenceConverter extends StyleConverter<ParsedValue<ParsedValue[], Insets>[], Insets[]> {
 

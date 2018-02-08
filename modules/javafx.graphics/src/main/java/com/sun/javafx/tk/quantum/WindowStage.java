@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2008, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -877,7 +877,8 @@ class WindowStage extends GlassStage {
         }
     }
 
-    void setEnabled(boolean enabled) {
+    @Override
+    public void setEnabled(boolean enabled) {
         if ((owner != null) && (owner instanceof WindowStage)) {
             ((WindowStage) owner).setEnabled(enabled);
         }
@@ -895,6 +896,11 @@ class WindowStage extends GlassStage {
                 appletWindow.assertStageOrder();
             }
         }
+    }
+
+    @Override
+    public long getRawHandle() {
+       return platformWindow.getRawHandle();
     }
 
     // Note: This method is required to workaround a glass issue mentioned in RT-12607

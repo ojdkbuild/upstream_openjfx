@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -68,7 +68,7 @@ import com.sun.javafx.tk.Toolkit;
  * </p>
  * <p>
  * Example:
- * <pre><code>
+ * <pre>{@code
  * FileChooser fileChooser = new FileChooser();
  * fileChooser.setTitle("Open Resource File");
  * fileChooser.getExtensionFilters().addAll(
@@ -80,8 +80,8 @@ import com.sun.javafx.tk.Toolkit;
  * if (selectedFile != null) {
  *    mainStage.display(selectedFile);
  * }
- * </code></pre>
- * </p>
+ * }</pre>
+ *
  * @since JavaFX 2.0
  */
 public final class FileChooser {

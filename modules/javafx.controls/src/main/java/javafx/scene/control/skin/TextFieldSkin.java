@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -441,7 +441,7 @@ public class TextFieldSkin extends TextInputControlSkin<TextField> {
      * @param end The ending index in the range, exclusive. This is one-past the last character to
      *            delete (consistent with the String manipulation methods). This must be &gt; the start,
      *            and &lt;= the length of the text.
-     * @param text The text that is to replace the range. This must not be null.
+     * @param txt The text that is to replace the range. This must not be null.
      * @see TextField#replaceText(int, int, String)
      */
     public void replaceText(int start, int end, String txt) {

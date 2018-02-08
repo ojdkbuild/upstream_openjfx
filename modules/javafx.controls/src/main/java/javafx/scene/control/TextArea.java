@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -460,6 +460,8 @@ public class TextArea extends TextInputControl {
     /**
      * Returns an unmodifiable list of the character sequences that back the
      * text area's content.
+     * @return an unmodifiable list of the character sequences that back the
+     * text area's content
      */
     public ObservableList<CharSequence> getParagraphs() {
         return ((TextAreaContent)getContent()).paragraphList;

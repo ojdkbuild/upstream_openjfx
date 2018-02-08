@@ -1,4 +1,32 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!doctype html>
+
+<!--
+/*
+ * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
+ * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
+ *
+ * This code is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 only, as
+ * published by the Free Software Foundation.  Oracle designates this
+ * particular file as subject to the "Classpath" exception as provided
+ * by Oracle in the LICENSE file that accompanied this code.
+ *
+ * This code is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
+ * version 2 for more details (a copy is included in the LICENSE file that
+ * accompanied this code).
+ *
+ * You should have received a copy of the GNU General Public License version
+ * 2 along with this work; if not, write to the Free Software Foundation,
+ * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.
+ *
+ * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA
+ * or visit www.oracle.com if you need additional information or have any
+ * questions.
+ */
+-->
+
 <html>
 <head>
   <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
@@ -35,12 +63,12 @@ change. Therefore, applications should not invoke layout directly on nodes.
 <p>
 The scene graph supports both resizable and non-resizable node classes.  The
 {@code isResizable()} method on {@link javafx.scene.Node Node} returns whether a
-given node is resizable or not.  A resizable node class is one which supports a range
+given node is resizable or not.  {@literal A resizable node class is one which supports a range
 of acceptable sizes (minimum <= preferred <= maximum), allowing its parent to resize
 it within that range during layout, given the parent's own layout policy and the
-layout needs of sibling nodes.  Node supports the following methods for layout code
+layout needs of sibling nodes.}  Node supports the following methods for layout code
 to determine a node's resizable range:
-<code><pre>
+<pre><code>
     public Orientation getContentBias()
     public double minWidth(double height)
     public double minHeight(double width)
@@ -48,7 +76,7 @@ to determine a node's resizable range:
     public double prefHeight(double width)
     public double maxWidth(double height)
     public double maxHeight(double width)
-</pre></code>
+</code></pre>
 <p>
 Non-resizable node classes, on the other hand, do <em>not</em> have a consistent
 resizing API and so are <em>not</em> resized by their parents during layout.
@@ -72,7 +100,6 @@ needs to set appropriate geometric properties which determine its size:
 <pre><code>    Circle circle = new Circle();
     circle.setRadius(50);
 </code></pre>
-</p>
 
 <h3>Resizable Range</h3>
 
@@ -131,11 +158,12 @@ once all effects, clipping, and transforms have been applied.
 <p>These two bounds properties will often differ for a given node and
 {@code layoutBounds} is computed differently depending on the node class:
 
-<table border="1" padding="4" summary="bounds computations">
+<table border="1">
+ <caption>Bounds Computation Table</caption>
  <thead>
      <tr>
-         <th halign="left">Node Type</th>
-         <th halign="left">Layout Bounds</th>
+         <th>Node Type</th>
+         <th>Layout Bounds</th>
      </tr>
  </thead>
  <tbody>
@@ -167,7 +195,7 @@ once all effects, clipping, and transforms have been applied.
          </td>
      </tr>
  </tbody>
-</table></p>
+</table>
 <p>
 So for example, if a {@link javafx.scene.effect.DropShadow DropShadow} is added to a shape,
 that shadow will <em>not</em>  be factored into layout by default.  Or, if a

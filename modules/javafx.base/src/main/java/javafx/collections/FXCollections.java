@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -407,7 +407,7 @@ public class FXCollections {
      * Creates and returns a typesafe wrapper on top of provided observable list.
      * @param <E> The type of List to be wrapped
      * @param list  an Observable list to be wrapped
-     * @param type   the type of element that <tt>list</tt> is permitted to hold
+     * @param type   the type of element that {@code list} is permitted to hold
      * @return a dynamically typesafe view of the specified list
      * @see Collections#checkedList(java.util.List, java.lang.Class)
      */
@@ -476,7 +476,7 @@ public class FXCollections {
      * Creates and returns a typesafe wrapper on top of provided observable set.
      * @param <E> The type of List to be wrapped
      * @param set an Observable set to be wrapped
-     * @param type  the type of element that <tt>set</tt> is permitted to hold
+     * @param type  the type of element that {@code set} is permitted to hold
      * @return a dynamically typesafe view of the specified set
      * @see Collections#checkedSet(java.util.Set, java.lang.Class)
      * @since JavaFX 8.0

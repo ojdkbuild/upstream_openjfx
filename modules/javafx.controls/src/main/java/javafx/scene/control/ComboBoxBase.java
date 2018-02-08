@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -143,6 +143,7 @@ public abstract class ComboBoxBase<T> extends Control {
      * The value of this ComboBox is defined as the selected item if the input
      * is not editable, or if it is editable, the most recent user action:
      * either the value input by the user, or the last selected item.
+     * @return the value property
      */
     public ObjectProperty<T> valueProperty() { return value; }
     private ObjectProperty<T> value = new SimpleObjectProperty<T>(this, "value");
@@ -159,6 +160,7 @@ public abstract class ComboBoxBase<T> extends Control {
      *
      * <p>Note that when the editable property changes, the value property is
      * reset, along with any other relevant state.
+     * @return the editable property
      */
     public BooleanProperty editableProperty() { return editable; }
     public final void setEditable(boolean value) { editableProperty().set(value); }
@@ -211,7 +213,7 @@ public abstract class ComboBoxBase<T> extends Control {
 
     // --- prompt text
     /**
-     * The {@code ComboBox} prompt text to display, or <tt>null</tt> if no
+     * The {@code ComboBox} prompt text to display, or {@code null} if no
      * prompt text is displayed. Prompt text is not displayed in all circumstances,
      * it is dependent upon the subclasses of ComboBoxBase to clarify when
      * promptText will be shown. For example, in most cases prompt text will never be
@@ -241,6 +243,7 @@ public abstract class ComboBoxBase<T> extends Control {
      * pressed on a Node and has not yet been released. {@code arm} however
      * also takes into account whether the mouse is actually over the
      * ComboBox and pressed.
+     * @return the armed property
      */
     public BooleanProperty armedProperty() { return armed; }
     private final void setArmed(boolean value) { armedProperty().set(value); }
@@ -261,6 +264,7 @@ public abstract class ComboBoxBase<T> extends Control {
      * {@link #editableProperty() editable} ComboBoxes, it may be when the user
      * provides their own input (be that via a {@link TextField} or some other
      * input mechanism.
+     * @return the on action property
      */
     public final ObjectProperty<EventHandler<ActionEvent>> onActionProperty() { return onAction; }
     public final void setOnAction(EventHandler<ActionEvent> value) { onActionProperty().set(value); }
@@ -405,9 +409,9 @@ public abstract class ComboBoxBase<T> extends Control {
      * Arms the ComboBox. An armed ComboBox will show a popup list on the next
      * expected UI gesture.
      *
-     * @expert This function is intended to be used by experts, primarily
-     *         by those implementing new Skins or Behaviors. It is not common
-     *         for developers or designers to access this function directly.
+     * Note: This function is intended to be used by experts, primarily
+     *       by those implementing new Skins or Behaviors. It is not common
+     *       for developers or designers to access this function directly.
      */
     public void arm() {
         if (! armedProperty().isBound()) {
@@ -418,9 +422,9 @@ public abstract class ComboBoxBase<T> extends Control {
     /**
      * Disarms the ComboBox. See {@link #arm()}.
      *
-     * @expert This function is intended to be used by experts, primarily
-     *         by those implementing new Skins or Behaviors. It is not common
-     *         for developers or designers to access this function directly.
+     * Note: This function is intended to be used by experts, primarily
+     *       by those implementing new Skins or Behaviors. It is not common
+     *       for developers or designers to access this function directly.
      */
     public void disarm() {
         if (! armedProperty().isBound()) {

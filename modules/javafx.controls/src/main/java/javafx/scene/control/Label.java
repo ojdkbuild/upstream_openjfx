@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -109,6 +109,7 @@ public class Label extends Labeled {
      * A Label can act as a label for a different Control or
      * Node. This is used for Mnemonics and Accelerator parsing.
      * This allows setting of the target Node.
+     * @return the Node that this label is to be associated with
      */
     public ObjectProperty<Node> labelForProperty() {
         if (labelFor == null) {

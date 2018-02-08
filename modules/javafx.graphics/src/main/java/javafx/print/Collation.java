@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2013, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -26,7 +26,7 @@
 package javafx.print;
 
 /**
- * Collation specifes whether or not media sheets of each copy
+ * Collation specifies whether or not media sheets of each copy
  * of a printed document in a job are to be in sequence.
  * It has no effect or relevance unless multiple job copies are printed.
  *

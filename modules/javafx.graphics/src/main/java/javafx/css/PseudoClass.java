@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2014, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -42,8 +42,7 @@ import com.sun.javafx.css.PseudoClassState;
  * <p>
  * The following example would allow &quot;xyzzy&quot; to be used as a
  *  pseudo-class in a CSS selector.
- * <code>
- * <pre>
+ * <pre><code>
  *  public boolean isMagic() {
  *       return magic.get();
  *   }
@@ -70,14 +69,14 @@ import com.sun.javafx.css.PseudoClassState;
  *
  *   private static final PseudoClass
  *       MAGIC_PSEUDO_CLASS = PseudoClass.getPseudoClass("xyzzy");
- * </pre>
- * </code>
+ * </code></pre>
  * @since JavaFX 8.0
  */
 public abstract class PseudoClass {
 
     /**
      * There is only one PseudoClass instance for a given pseudoClass.
+     * @param pseudoClass the pseudo-class
      * @return The PseudoClass for the given pseudoClass. Will not return null.
      * @throws IllegalArgumentException if pseudoClass parameter is null or an empty String
      */

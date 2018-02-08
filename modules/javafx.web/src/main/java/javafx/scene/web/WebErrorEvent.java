@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2014, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2013, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -129,7 +129,7 @@ public final class WebErrorEvent extends Event {
     /**
      * Creates a new {@code WebErrorEvent}.
      * @param source the event source which sent the event
-     * @param eventType the event type
+     * @param type the event type
      * @param message the text message associated with the event;
      *        may be {@code null}
      * @param exception the exception associated with the event;

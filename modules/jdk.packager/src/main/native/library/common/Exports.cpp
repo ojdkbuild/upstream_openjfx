@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, 2015, Oracle and/or its affiliates.
+ * Copyright (c) 2014, 2017, Oracle and/or its affiliates.
  * All rights reserved. Use is subject to license terms.
  *
  * This file is available and licensed under the following license:
@@ -51,10 +51,12 @@ private:
         JavaStringArray result(env, keys.size());
 
         for (unsigned int index = 0; index < keys.size(); index++) {
-            jstring item = PlatformString(keys[index]).toJString(env);
-            result.SetValue(index, item);
+            PlatformString value(keys[index]);
+            try {
+                result.SetValue(index, value.toJString(env));
+            }
+            catch (const JavaException&) {}
         }
-
         return result.GetData();
     }
 
@@ -69,10 +71,10 @@ public:
         OrderedMap<TString, TString> defaultuserargs = package.GetDefaultJVMUserArgs();
         TString loption = PlatformString(env, option).toString();
 
+        TString temp;
+        defaultuserargs.GetValue(loption, temp);
+        PlatformString value = temp;
         try {
-            TString temp;
-            defaultuserargs.GetValue(loption, temp);
-            PlatformString value = temp;
             result = value.toJString(env);
         }
         catch (const JavaException&) {

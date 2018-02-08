@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -230,11 +230,11 @@ public interface ListChangeListener<E> {
          * added, use getAddedSubList() method.
          * This is actually a shortcut to <code>c.getList().subList(c.getFrom(), c.getTo());</code><br>
          *
-         * <pre><code>
+         * <pre>{@code
          * for (Node n : change.getAddedSubList()) {
          *       // do something
          * }
-         * </code></pre>
+         * }</pre>
          * @return the newly created sublist view that contains all the added elements.
          * @throws IllegalStateException if this Change is in initial state
          */

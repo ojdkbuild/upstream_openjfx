@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2013, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -209,6 +209,7 @@ public final class PrinterJob {
     /**
      * Property representing the
      * <code>Printer</code> for this job.
+     * @return the <code>Printer</code> for this job
      */
     public final ObjectProperty<Printer> printerProperty() {
         /* The PrinterJob constructor always creates this property,
@@ -484,6 +485,7 @@ public final class PrinterJob {
     /**
      * A read only object property representing the current
      * <code>JobStatus</code>
+     * @return the current <code>JobStatus</code>
      */
     public ReadOnlyObjectProperty<JobStatus> jobStatusProperty() {
         return jobStatus.getReadOnlyProperty();

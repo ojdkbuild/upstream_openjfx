@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2014, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -71,6 +71,7 @@ public class TextInputDialog extends Dialog<String> {
     /**
      * Creates a new TextInputDialog with the default value entered into the
      * dialog {@link TextField}.
+     * @param defaultValue the default value entered into the dialog
      */
     public TextInputDialog(@NamedArg("defaultValue") String defaultValue) {
         final DialogPane dialogPane = getDialogPane();
@@ -118,6 +119,7 @@ public class TextInputDialog extends Dialog<String> {
 
     /**
      * Returns the {@link TextField} used within this dialog.
+     * @return the {@link TextField} used within this dialog
      */
     public final TextField getEditor() {
         return textField;
@@ -125,6 +127,7 @@ public class TextInputDialog extends Dialog<String> {
 
     /**
      * Returns the default value that was specified in the constructor.
+     * @return the default value that was specified in the constructor
      */
     public final String getDefaultValue() {
         return defaultValue;

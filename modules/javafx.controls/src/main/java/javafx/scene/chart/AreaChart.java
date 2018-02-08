@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -154,7 +154,7 @@ public class AreaChart<X,Y> extends XYChart<X,Y> {
         return (number == null) ? nullDefault : number.doubleValue();
     }
 
-       /** @inheritDoc */
+       /** {@inheritDoc} */
     @Override protected void updateAxisRange() {
         final Axis<X> xa = getXAxis();
         final Axis<Y> ya = getYAxis();
@@ -330,7 +330,7 @@ public class AreaChart<X,Y> extends XYChart<X,Y> {
         //Note: better animation here, point should move from old position to new position at center point between prev and next symbols
     }
 
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override protected void dataItemChanged(Data<X, Y> item) {
     }
 
@@ -415,7 +415,7 @@ public class AreaChart<X,Y> extends XYChart<X,Y> {
         }
     }
 
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override protected void layoutPlotChildren() {
         List<LineTo> constructedPath = new ArrayList<>(getDataSize());
         for (int seriesIndex=0; seriesIndex < getDataSize(); seriesIndex++) {

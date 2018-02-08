@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2008, 2015, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2008, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -1293,6 +1293,7 @@ public enum KeyCode {
      * Returns the character element of this key code, which is simply a mapping of the underlying platform code
      * returned by {@link #getCode()}.
      *
+     * @return the character element of this key code
      * @since 9
      */
     public final String getChar() {
@@ -1302,6 +1303,7 @@ public enum KeyCode {
     /**
      * Returns the underlying platform code used to represent the {@link #getChar() character} in the key code.
      *
+     * @return the underlying platform code used to represent the {@link #getChar() character} in the key code
      * @since 9
      */
     public final int getCode() {
@@ -1322,7 +1324,7 @@ public enum KeyCode {
      * Parses textual representation of a key.
      * @param name Textual representation of the key
      * @return KeyCode for the key with the given name, null if the string
-     *                 is unknown.
+     *                 is unknown
      */
     public static KeyCode getKeyCode(String name) {
         return nameMap.get(name);

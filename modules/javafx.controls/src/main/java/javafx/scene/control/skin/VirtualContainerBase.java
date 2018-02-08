@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -63,7 +63,7 @@ public abstract class VirtualContainerBase<C extends Control, I extends IndexedC
 
     /**
      *
-     * @param control
+     * @param control the control
      */
     public VirtualContainerBase(final C control) {
         super(control);
@@ -92,6 +92,7 @@ public abstract class VirtualContainerBase<C extends Control, I extends IndexedC
     /**
      * Returns the total number of items in this container, including those
      * that are currently hidden because they are out of view.
+     * @return the total number of items in this container
      */
     protected abstract int getItemCount();
 

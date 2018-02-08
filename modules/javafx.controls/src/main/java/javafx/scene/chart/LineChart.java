@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -187,7 +187,7 @@ public class LineChart<X,Y> extends XYChart<X,Y> {
 
     // -------------- METHODS ------------------------------------------------------------------------------------------
 
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override protected void updateAxisRange() {
         final Axis<X> xa = getXAxis();
         final Axis<Y> ya = getYAxis();
@@ -369,7 +369,7 @@ public class LineChart<X,Y> extends XYChart<X,Y> {
         //Note: better animation here, point should move from old position to new position at center point between prev and next symbols
     }
 
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override protected void dataItemChanged(Data<X, Y> item) {
     }
 
@@ -447,7 +447,7 @@ public class LineChart<X,Y> extends XYChart<X,Y> {
         }
     }
 
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override protected void layoutPlotChildren() {
         List<LineTo> constructedPath = new ArrayList<>(getDataSize());
         for (int seriesIndex=0; seriesIndex < getDataSize(); seriesIndex++) {
@@ -491,7 +491,7 @@ public class LineChart<X,Y> extends XYChart<X,Y> {
             }
         }
     }
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override void dataBeingRemovedIsAdded(Data item, Series series) {
         if (fadeSymbolTransition != null) {
             fadeSymbolTransition.setOnFinished(null);
@@ -515,7 +515,7 @@ public class LineChart<X,Y> extends XYChart<X,Y> {
         }
         XYValueMap.clear();
     }
-    /** @inheritDoc */
+    /** {@inheritDoc} */
     @Override void seriesBeingRemovedIsAdded(Series<X,Y> series) {
         if (seriesRemoveTimeline != null) {
             seriesRemoveTimeline.setOnFinished(null);

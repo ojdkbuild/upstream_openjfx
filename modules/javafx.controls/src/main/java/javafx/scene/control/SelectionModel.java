@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -62,6 +62,7 @@ public abstract class SelectionModel<T> {
      * a {@link ListChangeListener} to the collection returned by
      * {@link MultipleSelectionModel#getSelectedIndices()} to be informed whenever
      * the selection changes, and this will also work in the case of single selection.
+     * @return the selected index property
      */
     public final ReadOnlyIntegerProperty selectedIndexProperty() { return selectedIndex.getReadOnlyProperty(); }
     private ReadOnlyIntegerWrapper selectedIndex = new ReadOnlyIntegerWrapper(this, "selectedIndex", -1);
@@ -81,6 +82,7 @@ public abstract class SelectionModel<T> {
      * InvalidationListener listener = ...;
      * sm.selectedIndexProperty().addListener(listener);
      * </code></pre>
+     * @return the selected index
      */
     public final int getSelectedIndex() { return selectedIndexProperty().get(); }
 
@@ -96,6 +98,7 @@ public abstract class SelectionModel<T> {
      * model is set to be single selection, but is equally applicable when in
      * multiple selection mode. When in this mode, the selected item will always
      * represent the last selection made.
+     * @return the selected item property
      */
     public final ReadOnlyObjectProperty<T> selectedItemProperty() { return selectedItem.getReadOnlyProperty(); }
     private ReadOnlyObjectWrapper<T> selectedItem = new ReadOnlyObjectWrapper<T>(this, "selectedItem");
@@ -116,6 +119,7 @@ public abstract class SelectionModel<T> {
      * InvalidationListener listener = ...;
      * sm.selectedItemProperty().addListener(listener);
      * </code></pre>
+     * @return the selected item
      */
     public final T getSelectedItem() { return selectedItemProperty().get(); }
 

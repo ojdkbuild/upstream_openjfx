@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -39,7 +39,7 @@ import javafx.scene.Node;
  * to their preferred sizes. It is the application's responsibility to position the
  * children since the pane leaves the positions alone during layout.
  * For example:
- * <pre><code>
+ * <pre>{@code
  *     Pane canvas = new Pane();
  *     canvas.setStyle("-fx-background-color: black;");
  *     canvas.setPrefSize(200,200);
@@ -48,7 +48,7 @@ import javafx.scene.Node;
  *     Rectangle rectangle = new Rectangle(100,100,Color.RED);
  *     rectangle.relocate(70,70);
  *     canvas.getChildren().addAll(circle,rectangle);
- * </code></pre>
+ * }</pre>
  * <p>
  * Note: if an application needs children to be kept aligned within a parent (centered,
  * positioned at top-left, etc), it should use a {@link javafx.scene.layout.StackPane StackPane}
@@ -58,13 +58,16 @@ import javafx.scene.Node;
  * Pane resizes each managed child regardless of the child's visible property value;
  * unmanaged children are ignored for all layout calculations.</p>
  *
- * <h4>Resizable Range</h4>
+ * <h3>Resizable Range</h3>
  *
+ * <p>
  * A pane's parent will resize the pane within the pane's resizable range
  * during layout.   By default the pane computes this range based on its content
- * as outlined in the tables below:
+ * as outlined in the table below:
+ * </p>
  *
  * <table border="1">
+ * <caption>Pane Resize Table</caption>
  * <tr><td></td><th>width</th><th>height</th></tr>
  * <tr><th>minimum</th>
  * <td>left plus right insets.</td>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2010, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -160,6 +160,7 @@ public abstract class Transition extends Animation {
      * Returns the target {@link Node} for animation of this {@code Transition}.
      * This method returns {@code node} if it is set, else returns its
      * {@code parent.getTargetNode()} otherwise null.
+     * @return the target {@code Node}
      */
     protected Node getParentTargetNode() {
         return (parent != null && parent instanceof Transition) ?

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, 2016, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2013, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -198,6 +198,8 @@ public abstract class LightBase extends Node {
      * are affected by it. If the scope list is non-empty, only those
      * 3D Shape nodes in the scope list and under the Group nodes in the
      * scope list are affected by this Light node.
+     * @return the list of nodes that specifies the hierarchical scope of this
+     * Light
      */
     public ObservableList<Node> getScope() {
         if (scope == null) {

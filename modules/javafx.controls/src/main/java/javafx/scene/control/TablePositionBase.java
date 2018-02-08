@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2013, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2011, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -89,6 +89,7 @@ public abstract class TablePositionBase<TC extends TableColumnBase> {
 
     /**
      * The row that this TablePosition represents in the TableView.
+     * @return the row that this TablePosition represents in the TableView
      */
     public int getRow() {
         return row;
@@ -97,11 +98,14 @@ public abstract class TablePositionBase<TC extends TableColumnBase> {
     /**
      * The column index that this TablePosition represents in the TableView. It
      * is -1 if the TableView or TableColumn instances are null.
+     * @return the column index that this TablePosition represents in the
+     * TableView
      */
     public abstract int getColumn();
 
     /**
      * The TableColumn that this TablePosition represents in the TableView.
+     * @return the TableColumn that this TablePosition represents in the TableView
      */
     public TC getTableColumn() {
         return tableColumnRef.get();

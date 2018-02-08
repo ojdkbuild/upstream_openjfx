@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, 2014, Oracle and/or its affiliates. All rights reserved.
+ * Copyright (c) 2012, 2017, Oracle and/or its affiliates. All rights reserved.
  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.
  *
  * This code is free software; you can redistribute it and/or modify it
@@ -40,6 +40,7 @@ import javafx.util.converter.DefaultStringConverter;
  * being edited, and as a TextField when in editing mode. The TextField will, by
  * default, stretch to fill the entire table cell.
  *
+ * @param <S> The type of the TableView generic type
  * @param <T> The type of the elements contained within the TableColumn.
  * @since JavaFX 2.2
  */
@@ -58,6 +59,7 @@ public class TextFieldTableCell<S,T> extends TableCell<S,T> {
      * This method will only  work on {@link TableColumn} instances which are of
      * type String.
      *
+     * @param <S> The type of the TableView generic type
      * @return A {@link Callback} that can be inserted into the
      *      {@link TableColumn#cellFactoryProperty() cell factory property} of a
      *      TableColumn, that enables textual editing of the content.
@@ -76,6 +78,8 @@ public class TextFieldTableCell<S,T> extends TableCell<S,T> {
      * in) into an instance of type T. This item will then be passed along to the
      * {@link TableColumn#onEditCommitProperty()} callback.
      *
+     * @param <S> The type of the TableView generic type
+     * @param <T> The type of the elements contained within the TableColumn
      * @param converter A {@link StringConverter} that can convert the given String
      *      (from what the user typed in) into an instance of type T.
      * @return A {@link Callback} that can be inserted into the
@@ -147,6 +151,7 @@ public class TextFieldTableCell<S,T> extends TableCell<S,T> {
 
     /**
      * The {@link StringConverter} property.
+     * @return the {@link StringConverter} property
      */
     public final ObjectProperty<StringConverter<T>> converterProperty() {
         return converter;
@@ -154,6 +159,7 @@ public class TextFieldTableCell<S,T> extends TableCell<S,T> {
 
     /**
      * Sets the {@link StringConverter} to be used in this cell.
+     * @param value the {@link StringConverter} to be used in this cell
      */
     public final void setConverter(StringConverter<T> value) {
         converterProperty().set(value);
@@ -161,6 +167,7 @@ public class TextFieldTableCell<S,T> extends TableCell<S,T> {
 
     /**
      * Returns the {@link StringConverter} used in this cell.
+     * @return the {@link StringConverter} used in this cell
      */
     public final StringConverter<T> getConverter() {
         return converterProperty().get();
