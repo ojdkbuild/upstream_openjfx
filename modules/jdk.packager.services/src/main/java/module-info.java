@@ -31,8 +31,10 @@
  */
 module jdk.packager.services {
     exports jdk.packager.services;
+    exports jdk.packager.services.singleton;
 
     requires java.prefs;
+    requires java.desktop;
 
     uses jdk.packager.services.UserJvmOptionsService;
 
