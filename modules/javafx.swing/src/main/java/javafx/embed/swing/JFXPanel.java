@@ -143,16 +143,16 @@ public class JFXPanel extends JComponent {
     private static AtomicInteger instanceCount = new AtomicInteger(0);
     private static PlatformImpl.FinishListener finishListener;
 
-    private HostContainer hostContainer;
+    private transient HostContainer hostContainer;
 
-    private volatile EmbeddedWindow stage;
-    private volatile Scene scene;
+    private transient volatile EmbeddedWindow stage;
+    private transient volatile Scene scene;
 
     // Accessed on EDT only
-    private SwingDnD dnd;
+    private transient SwingDnD dnd;
 
-    private EmbeddedStageInterface stagePeer;
-    private EmbeddedSceneInterface scenePeer;
+    private transient EmbeddedStageInterface stagePeer;
+    private transient EmbeddedSceneInterface scenePeer;
 
     // The logical size of the FX content
     private int pWidth;
@@ -297,15 +297,15 @@ public class JFXPanel extends JComponent {
         if (Toolkit.getToolkit().isFxUserThread()) {
             setSceneImpl(newScene);
         } else {
-            final CountDownLatch initLatch = new CountDownLatch(1);
-            Platform.runLater(() -> {
-                setSceneImpl(newScene);
-                initLatch.countDown();
-            });
-            try {
-                initLatch.await();
-            } catch (InterruptedException z) {
-                z.printStackTrace(System.err);
+            EventQueue eventQueue = AccessController.doPrivileged(
+                    (PrivilegedAction<EventQueue>) java.awt.Toolkit
+                            .getDefaultToolkit()::getSystemEventQueue);
+            SecondaryLoop secondaryLoop = eventQueue.createSecondaryLoop();
+            if (secondaryLoop.enter()) {
+                Platform.runLater(() -> {
+                    setSceneImpl(newScene);
+                });
+                secondaryLoop.exit();
             }
         }
     }
@@ -444,6 +444,16 @@ public class JFXPanel extends JComponent {
             (e.getButton() == MouseEvent.BUTTON1)) {
             if (!hasFocus()) {
                 requestFocus();
+                // this focus request event goes to eventqueue and will be
+                // asynchronously handled so MOUSE_PRESSED event will not be
+                // honoured by FX immediately due to lack of focus in fx
+                // component. Fire the same MOUSE_PRESSED event after
+                // requestFocus() so that 2nd mouse press will be honoured
+                // since now fx have focus
+                AppContext context = SunToolkit.targetToAppContext(this);
+                if (context != null) {
+                    SunToolkit.postEvent(context, e);
+                }
             }
         }
 
@@ -638,19 +648,13 @@ public class JFXPanel extends JComponent {
         int focusCause = (focused ? AbstractEvents.FOCUSEVENT_ACTIVATED :
                                       AbstractEvents.FOCUSEVENT_DEACTIVATED);
 
-        // FIXME: JDK-8156592 -- replace this with FocusEvent.getCause()
-        // which is now public API, once we update to using a newer JDK.
-        // NOTE: the focusCause is unused at present.
-        /*
-        if (focused && (e instanceof CausedFocusEvent)) {
-            CausedFocusEvent ce = (CausedFocusEvent) e;
-            if (ce.getCause() == CausedFocusEvent.Cause.TRAVERSAL_FORWARD) {
+        if (focused) {
+            if (e.getCause() == FocusEvent.Cause.TRAVERSAL_FORWARD) {
                 focusCause = AbstractEvents.FOCUSEVENT_TRAVERSED_FORWARD;
-            } else if (ce.getCause() == sun.awt.CausedFocusEvent.Cause.TRAVERSAL_BACKWARD) {
+            } else if (e.getCause() == FocusEvent.Cause.TRAVERSAL_BACKWARD) {
                 focusCause = AbstractEvents.FOCUSEVENT_TRAVERSED_BACKWARD;
             }
         }
-        */
         stagePeer.setFocused(focused, focusCause);
     }
 
@@ -707,11 +711,15 @@ public class JFXPanel extends JComponent {
     private void sendInputMethodEventToFX(InputMethodEvent e) {
         String t = InputMethodSupport.getTextForEvent(e);
 
+        int insertionIndex = 0;
+        if (e.getCaret() != null) {
+            insertionIndex = e.getCaret().getInsertionIndex();
+        }
         scenePeer.inputMethodEvent(
                 javafx.scene.input.InputMethodEvent.INPUT_METHOD_TEXT_CHANGED,
                 InputMethodSupport.inputMethodEventComposed(t, e.getCommittedCharacterCount()),
                 t.substring(0, e.getCommittedCharacterCount()),
-                e.getCaret().getInsertionIndex());
+                insertionIndex);
     }
 
     /**
@@ -819,7 +827,7 @@ public class JFXPanel extends JComponent {
         }
     }
 
-    private final AWTEventListener ungrabListener = event -> {
+    private transient  AWTEventListener ungrabListener = event -> {
         if (event instanceof sun.awt.UngrabEvent) {
             SwingFXUtils.runOnFxThread(() -> {
                 if (JFXPanel.this.stagePeer != null) {
