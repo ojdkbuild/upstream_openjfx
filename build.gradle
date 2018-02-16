@@ -492,7 +492,7 @@ ext.DO_JCOV = Boolean.parseBoolean(JCOV)
 if (IS_MAC) {
     defineProperty("NUM_COMPILE_THREADS", "1")
 } else {
-    defineProperty("NUM_COMPILE_THREADS", "${Runtime.runtime.availableProcessors()}")
+    defineProperty("NUM_COMPILE_THREADS", "1")
 }
 
 //
@@ -2272,31 +2272,6 @@ project(":fxml") {
     compileJava.options.compilerArgs.addAll(qualExportsCore)
 }
 
-project(":jmx") {
-    project.ext.buildModule = false
-    project.ext.moduleRuntime = false
-    project.ext.moduleName = "javafx.jmx"
-
-    commonModuleSetup(project, [ 'base', 'graphics', 'swing', 'controls', 'media', 'jmx' ])
-
-    dependencies {
-    }
-
-    // Tests are permanently disabled
-    test.enabled = false
-
-    compileJava.options.compilerArgs.addAll([
-            "--add-exports=javafx.graphics/com.sun.javafx.jmx=ALL-UNNAMED",
-            "--add-exports=javafx.graphics/com.sun.scenario.animation=ALL-UNNAMED",
-            "--add-exports=javafx.graphics/com.sun.scenario.animation.jmx=ALL-UNNAMED",
-            "--add-exports=javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED",
-            "--add-exports=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED",
-            "--add-exports=javafx.graphics/com.sun.javafx.tk=ALL-UNNAMED",
-            "--add-exports=javafx.media/com.sun.media.jfxmedia=ALL-UNNAMED",
-            "--add-exports=javafx.media/com.sun.media.jfxmedia.events=ALL-UNNAMED",
-            ])
-}
-
 project(":fxpackagerservices") {
     project.ext.buildModule = COMPILE_FXPACKAGER
     project.ext.includeSources = true
@@ -2947,13 +2922,16 @@ project(":media") {
 
     compileToolsJava {
         enabled = IS_COMPILE_MEDIA
-        options.compilerArgs.addAll(project.modulePathArgs)
+        def dir = new File(project.sourceSets.main.output.classesDir, project.ext.moduleName);
+        def mp = new ArrayList<String>(project.modulePathArgs)
+        mp[mp.size() - 1] += File.pathSeparator + dir.path
+        options.compilerArgs.addAll(mp)
         options.compilerArgs.addAll([
             '--add-exports', 'javafx.media/com.sun.media.jfxmedia=ALL-UNNAMED',
             ])
     }
 
-    project.ext.makeJobsFlag = IS_WINDOWS && IS_DEBUG_NATIVE ? "-j1" : "-j5";
+    project.ext.makeJobsFlag = IS_WINDOWS && IS_DEBUG_NATIVE ? "-j1" : "-j1";
     project.ext.buildType = IS_DEBUG_NATIVE ? "Debug" : "Release";
 
     def nativeSrcDir = file("${projectDir}/src/main/native")
@@ -2966,12 +2944,16 @@ project(":media") {
             def classpath = files(sourceSets.tools.output);
             def sourcepath = sourceSets.main.java.srcDirs;
             def srcRoot = (sourcepath.toArray())[0];
+            def dir = new File(project.sourceSets.main.output.classesDir, project.ext.moduleName);
+            def mp = new ArrayList<String>(project.modulePathArgs)
+            mp[mp.size() - 1] += File.pathSeparator + dir.path
 
             mkdir generatedHeadersDir;
 
             exec {
                 commandLine("$JAVA");
                 args += patchModuleArgs
+                args += mp
                 args +=  [ '--add-exports=javafx.media/com.sun.media.jfxmedia=ALL-UNNAMED' ]
                 args +=  [ '-classpath', "${classpath.asPath}" ]
                 args += [ "headergen.HeaderGen", "$headerpath", "$srcRoot" ]
@@ -3200,6 +3182,31 @@ project(":media") {
     compileJava.options.compilerArgs.addAll(qualExportsCore)
 }
 
+project(":jmx") {
+    project.ext.buildModule = false
+    project.ext.moduleRuntime = false
+    project.ext.moduleName = "javafx.jmx"
+
+    commonModuleSetup(project, [ 'base', 'graphics', 'swing', 'controls', 'media', 'jmx' ])
+
+    dependencies {
+    }
+
+    // Tests are permanently disabled
+    test.enabled = false
+
+    compileJava.options.compilerArgs.addAll([
+            "--add-exports=javafx.graphics/com.sun.javafx.jmx=ALL-UNNAMED",
+            "--add-exports=javafx.graphics/com.sun.scenario.animation=ALL-UNNAMED",
+            "--add-exports=javafx.graphics/com.sun.scenario.animation.jmx=ALL-UNNAMED",
+            "--add-exports=javafx.graphics/com.sun.javafx.stage=ALL-UNNAMED",
+            "--add-exports=javafx.graphics/com.sun.javafx.scene=ALL-UNNAMED",
+            "--add-exports=javafx.graphics/com.sun.javafx.tk=ALL-UNNAMED",
+            "--add-exports=javafx.media/com.sun.media.jfxmedia=ALL-UNNAMED",
+            "--add-exports=javafx.media/com.sun.media.jfxmedia.events=ALL-UNNAMED",
+            ])
+}
+
 project(":web") {
     configurations {
         webkit
@@ -3292,8 +3299,9 @@ project(":web") {
 
                 exec {
                     workingDir("$webkitOutputDir")
-                    def cmakeArgs = "-DENABLE_TOOLS=1"
+                    def cmakeArgs = "-DENABLE_TOOLS=1 -DENABLE_WEBVTT_REGIONS=ON"
                     if (t.name == "win") {
+                        cmakeArgs = "$cmakeArgs -DCMAKE_CXX_FLAGS=-bigobj"
                         String parfaitPath = IS_COMPILE_PARFAIT ? System.getenv().get("PARFAIT_PATH") + ";" : "";
                         Map environmentSettings = new HashMap(WINDOWS_NATIVE_COMPILE_ENVIRONMENT)
                         environmentSettings["PATH"] = parfaitPath + "$WINDOWS_VS_PATH"
@@ -3381,6 +3389,12 @@ project(":web") {
             source = project.sourceSets.main.java.srcDirs
             options.compilerArgs.addAll([
                 '-implicit:none',
+                '--add-exports=java.base/sun.util.logging=javafx.base',
+                '--add-exports=java.base/sun.reflect.misc=javafx.base',
+                '--add-exports=java.base/sun.util.logging=javafx.graphics',
+                '--add-exports=java.base/sun.util.logging=javafx.controls',
+                '--add-exports=java.base/sun.nio.ch=javafx.media',
+                '--add-exports=java.base/sun.reflect.misc=javafx.web',
                 '--module-source-path', defaultModuleSourcePath
                 ])
         }

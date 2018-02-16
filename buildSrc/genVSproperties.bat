@@ -26,16 +26,16 @@ REM   and echos out a property file with the values of the environment
 REM   variables we want, e.g. PATH, INCLUDE, LIB, and LIBPATH.
 
 REM Clean out the current settings
-set INCLUDE=
-set LIB=
-set LIBPATH=
+rem set INCLUDE=
+rem set LIB=
+rem set LIBPATH=
 
 REM Run the vsvars32.bat (12.0) / vcvars32.bat (15.0) file, sending it's output to neverland.
 REM The current officially supported Visual Studio version is 15.0.
 REM Handling of 11.0 and 14.0 is excluded here.
 REM The previous officially supported VS version was 12.0
 REM So, the search order is 150, then 120, then 100
-set VSVER=150
+set VSVER=141
 set "VSVARS32FILE=C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvars32.bat"
 if not "%VS150COMNTOOLS%"=="" (
     set "VS150COMNTOOLS=%VS150COMNTOOLS%"
