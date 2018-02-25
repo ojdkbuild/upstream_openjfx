@@ -1938,6 +1938,10 @@ public abstract class PrismFontFactory implements FontFactory {
         }
     }
 
+    @Override
+    public void dispose() {
+    }
+
     static native int getLCDContrastWin32();
     private static native float getSystemFontSizeNative();
     private static native String getSystemFontNative();

@@ -180,6 +180,10 @@ final class J2DFontFactory implements FontFactory {
         return fonts;
     }
 
+    @Override
+    public void dispose() {
+    }
+
     private static boolean compositeFontMethodsInitialized = false;
     private static Method getCompositeFontUIResource = null;
 

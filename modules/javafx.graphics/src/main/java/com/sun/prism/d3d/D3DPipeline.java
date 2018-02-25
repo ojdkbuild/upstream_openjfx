@@ -160,6 +160,9 @@ public final class D3DPipeline extends GraphicsPipeline {
                     "This operation is not permitted on the current thread ["
                     + Thread.currentThread().getName() + "]");
         }
+        if (null != fontFactory) {
+            fontFactory.dispose();
+        }
         notifyAllResourcesReleased();
         nDispose();
         for (int i=0; i!=factories.length; ++i) {
